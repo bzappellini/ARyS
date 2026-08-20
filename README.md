@@ -117,8 +117,8 @@ escudo) combinada con una identidad propia de la materia. Ver
 
 | Unidad | Filminas | Teoría | Práctico |
 |---|:---:|:---:|:---:|
-| 0 · Presentación | 🟡 base | — | — |
-| 1 · Conceptos | 🟡 base | 🟡 base | — |
+| 0 · Presentación | ✅ | — | — |
+| 1 · Conceptos | ✅ | ✅ | ✅ |
 | 2 · Seguridad Física | ✅ | ✅ | ✅ |
 | 3 · Hacking Ético | ✅ | ✅ | ✅ |
 | 4 · Sniffing | ⬜ | ⬜ | ⬜ |

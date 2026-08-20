@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 662" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Tríada CIA: Confidencialidad, Integridad y Disponibilidad">
+  <defs>
+    <linearGradient id="tri" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A63C4" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#004992" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+  <!-- Triangle -->
+  <polygon points="450,70 800,560 100,560" fill="url(#tri)" stroke="#FF9900" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Center label -->
+  <circle cx="450" cy="410" r="70" fill="#FF9900"/>
+  <text x="450" y="404" text-anchor="middle" font-size="18" font-weight="800" fill="#021C36">INFOR-</text>
+  <text x="450" y="428" text-anchor="middle" font-size="18" font-weight="800" fill="#021C36">MACIÓN</text>
+
+  <!-- Vertices -->
+  <g text-anchor="middle">
+    <!-- Top: Confidencialidad -->
+    <circle cx="450" cy="70" r="15" fill="#35C4DC"/>
+    <text x="450" y="34" font-size="26" font-weight="800" fill="#FFFFFF">Confidencialidad</text>
+    <text x="450" y="118" font-size="16" fill="#B9C7D8">solo quien debe, accede</text>
+    <!-- Bottom-left: Integridad -->
+    <circle cx="100" cy="560" r="15" fill="#3DA35D"/>
+    <text x="120" y="600" font-size="26" font-weight="800" fill="#FFFFFF" text-anchor="start">Integridad</text>
+    <text x="120" y="626" font-size="16" fill="#B9C7D8" text-anchor="start">el dato no se altera</text>
+    <!-- Bottom-right: Disponibilidad -->
+    <circle cx="800" cy="560" r="15" fill="#A78BFA"/>
+    <text x="780" y="600" font-size="26" font-weight="800" fill="#FFFFFF" text-anchor="end">Disponibilidad</text>
+    <text x="780" y="626" font-size="16" fill="#B9C7D8" text-anchor="end">accesible cuando se necesita</text>
+  </g>
+</svg>
