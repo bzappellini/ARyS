@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 470" font-family="system-ui, 'Segoe UI', 'DejaVu Sans', sans-serif" role="img" aria-label="Anatomía del escaneo TCP SYN según el estado del puerto">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#35C4DC"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3DA35D"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#E5484D"/></marker>
+  </defs>
+
+  <!-- Actors -->
+  <g font-size="17" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="70" y="24" width="150" height="40" rx="8" fill="#0A63C4"/>
+    <text x="145" y="50">Atacante</text>
+    <rect x="840" y="24" width="150" height="40" rx="8" fill="#243B57" stroke="#6FA8E0"/>
+    <text x="915" y="50">Objetivo</text>
+  </g>
+  <!-- lifelines -->
+  <line x1="145" y1="66" x2="145" y2="450" stroke="#3A4A5C" stroke-width="2" stroke-dasharray="4 5"/>
+  <line x1="915" y1="66" x2="915" y2="450" stroke="#3A4A5C" stroke-width="2" stroke-dasharray="4 5"/>
+
+  <!-- Case ABIERTO -->
+  <text x="30" y="120" font-size="15" font-weight="700" fill="#3DA35D">ABIERTO</text>
+  <line x1="150" y1="140" x2="908" y2="140" stroke="#35C4DC" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="530" y="132" text-anchor="middle" font-size="15" fill="#9EE7F5">SYN</text>
+  <line x1="910" y1="176" x2="152" y2="176" stroke="#3DA35D" stroke-width="3" marker-end="url(#a2)"/>
+  <text x="530" y="168" text-anchor="middle" font-size="15" fill="#8FE0A8">SYN / ACK</text>
+  <line x1="150" y1="212" x2="908" y2="212" stroke="#35C4DC" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="530" y="204" text-anchor="middle" font-size="15" fill="#9EE7F5">RST  (cortamos antes del ACK)</text>
+
+  <!-- Case CERRADO -->
+  <text x="30" y="278" font-size="15" font-weight="700" fill="#E5484D">CERRADO</text>
+  <line x1="150" y1="298" x2="908" y2="298" stroke="#35C4DC" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="530" y="290" text-anchor="middle" font-size="15" fill="#9EE7F5">SYN</text>
+  <line x1="910" y1="334" x2="152" y2="334" stroke="#E5484D" stroke-width="3" marker-end="url(#a3)"/>
+  <text x="530" y="326" text-anchor="middle" font-size="15" fill="#F2A6A8">RST</text>
+
+  <!-- Case FILTRADO -->
+  <text x="30" y="400" font-size="15" font-weight="700" fill="#8A97A6">FILTRADO</text>
+  <line x1="150" y1="420" x2="908" y2="420" stroke="#35C4DC" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="530" y="412" text-anchor="middle" font-size="15" fill="#9EE7F5">SYN</text>
+  <text x="915" y="446" text-anchor="middle" font-size="14" fill="#8A97A6">firewall descarta · sin respuesta</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 540" font-family="system-ui, 'Segoe UI', 'DejaVu Sans', sans-serif" role="img" aria-label="Capas concéntricas de defensa en profundidad física">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#FF9900" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#FF9900" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="530" y="270" width="1" height="1" fill="url(#glow)"/>
+  <ellipse cx="530" cy="272" rx="470" ry="250" fill="url(#glow)"/>
+
+  <!-- Rings, outer(cool) -> inner(warm) -->
+  <g fill="none" stroke-width="2.5">
+    <rect x="24"  y="24"  width="1012" height="492" rx="20" stroke="#6FA8E0" fill="#6FA8E0" fill-opacity="0.05"/>
+    <rect x="86"  y="70"  width="888"  height="400" rx="18" stroke="#4FC3D6" fill="#4FC3D6" fill-opacity="0.05"/>
+    <rect x="148" y="116" width="764"  height="308" rx="16" stroke="#7FD1B0" fill="#7FD1B0" fill-opacity="0.05"/>
+    <rect x="210" y="162" width="640"  height="216" rx="14" stroke="#FFC061" fill="#FFC061" fill-opacity="0.06"/>
+    <rect x="272" y="208" width="516"  height="124" rx="12" stroke="#FF9900" fill="#FF9900" fill-opacity="0.07"/>
+  </g>
+
+  <!-- Layer labels -->
+  <g font-size="20" font-weight="700" fill="#FFFFFF">
+    <text x="46"  y="52">1 · PERÍMETRO</text>
+    <text x="108" y="98">2 · EDIFICIO</text>
+    <text x="170" y="144">3 · SALA</text>
+    <text x="232" y="190">4 · RACK</text>
+  </g>
+  <g font-size="15.5" fill="#B9C7D8">
+    <text x="205" y="52">cerco · portón · iluminación · vigilancia</text>
+    <text x="245" y="98">recepción · control de visitas · torniquete</text>
+    <text x="270" y="144">esclusa (mantrap) · tarjeta + PIN</text>
+    <text x="330" y="190">jaula o gabinete con cerradura</text>
+  </g>
+
+  <!-- Center: protected asset -->
+  <circle cx="530" cy="270" r="52" fill="#FF9900"/>
+  <circle cx="530" cy="270" r="52" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+  <g transform="translate(530,262)" fill="#021C36">
+    <rect x="-15" y="-2" width="30" height="22" rx="4"/>
+    <path d="M -9 -2 v -7 a 9 9 0 0 1 18 0 v 7" fill="none" stroke="#021C36" stroke-width="4"/>
+  </g>
+  <text x="530" y="306" text-anchor="middle" font-size="14" font-weight="700" fill="#021C36">ACTIVO</text>
+  <text x="530" y="352" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">5 · EQUIPO</text>
+  <text x="530" y="374" text-anchor="middle" font-size="14.5" fill="#B9C7D8">cifrado de disco · TPM · bloqueo de puertos</text>
+
+  <!-- Retarda + evidencia arrow note -->
+  <text x="530" y="446" text-anchor="middle" font-size="16" fill="#9FB2C7">Cada capa <tspan fill="#FFC061" font-weight="700">retrasa</tspan> al atacante y <tspan fill="#FFC061" font-weight="700">genera evidencia</tspan></text>
+</svg>

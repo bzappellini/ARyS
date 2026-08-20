@@ -6,8 +6,9 @@ Repositorio de la cátedra **Administración de Redes y Seguridad** de la
 Ingeniería, Sede Trelew.
 
 Reúne **filminas, material teórico y trabajos prácticos** de las ocho unidades de
-la materia, en un formato pensado para **reutilizarse año a año**: todo es
-Markdown versionado y se publica solo como sitio web.
+la materia, pensado para **reutilizarse año a año**: todo es Markdown versionado,
+las filminas se generan con **[Marp](https://marp.app/)** y se publican solas como
+sitio web.
 
 > **Profesor responsable:** Bruno Zappellini · Segundo cuatrimestre
 > **Cursada:** Teoría jueves 15–18 · Práctica viernes 17–20
@@ -15,93 +16,102 @@ Markdown versionado y se publica solo como sitio web.
 
 ## 🌐 Sitio web
 
-Una vez publicado en GitHub Pages:
+Publicado en GitHub Pages:
 
 **https://bzappellini.github.io/ARyS/**
 
 - **`index.html`** — portal con todas las unidades
-- **`slides.html?md=<ruta>`** — visor de filminas (Reveal.js)
-- **`doc.html?md=<ruta>`** — lector de material teórico y prácticos (Markdown)
+- **`unidades/<u>/filminas.html`** — filminas (generadas por Marp, autocontenidas)
+- **`doc.html?md=<ruta>`** — lector de teoría y prácticos (Markdown)
+
+## 🚀 Uso local con Docker (recomendado)
+
+Un solo comando levanta el sitio completo (genera las filminas y las sirve):
+
+```bash
+docker compose up --build
+```
+
+Abrí **http://localhost:8080/**. Para bajarlo: `docker compose down`.
+
+## 🖥️ Uso local sin Docker
+
+Requiere [Marp CLI](https://github.com/marp-team/marp-cli):
+
+```bash
+npm install -g @marp-team/marp-cli
+./scripts/build.sh              # genera las filminas .html
+python3 -m http.server 8000     # servir en http://localhost:8000
+```
+
+## 📄 Exportar filminas a PDF / PPTX (para Moodle o impresión)
+
+Usa la imagen oficial de Marp (incluye Chromium), no requiere instalar nada más:
+
+```bash
+./scripts/export.sh pdf     # genera dist/uNN-*.pdf
+./scripts/export.sh pptx    # genera dist/uNN-*.pptx (editable en PowerPoint)
+```
 
 ## 📂 Estructura
 
 ```
 ARyS/
 ├── index.html                 # Portal principal
-├── slides.html                # Visor de filminas (Reveal.js)
-├── doc.html                   # Lector de teoría / prácticos
-├── identidad/                 # Identidad visual
-│   ├── arys-tokens.css        # Tokens de color y tipografía
+├── doc.html                   # Lector de teoría / prácticos (marked)
+├── Dockerfile                 # Marp build -> nginx
+├── docker-compose.yml         # docker compose up --build
+├── marp.config.mjs            # Config Marp (HTML + tema arys)
+├── identidad/
+│   ├── arys-marp.css          # Tema Marp institucional (UNPSJB)
+│   ├── arys-tokens.css        # Tokens para el portal
 │   ├── GUIA-IDENTIDAD.md      # Guía de marca
 │   └── assets/                # Logos ARyS + escudos UNPSJB
 ├── assets/
-│   ├── css/                   # Estilos de filminas y sitio
-│   └── vendor/                # Reveal.js y marked (offline, sin CDN)
+│   ├── css/arys-site.css      # Estilos del portal
+│   ├── img/                   # Diagramas SVG de las filminas
+│   └── vendor/marked/         # Lector Markdown (offline)
 ├── unidades/
-│   ├── u00-presentacion/
+│   ├── u00-presentacion/      # filminas.md
 │   ├── u01-conceptos-seguridad/
 │   ├── u02-seguridad-fisica/  # filminas.md · teoria.md · practico.md
 │   ├── u03-hacking-etico/     # filminas.md · teoria.md · practico.md
 │   └── ...                    # u04–u08 (en construcción)
-├── cursadas/
-│   └── 2026/                  # Material específico del año (notas, actas)
-└── .github/workflows/pages.yml
+├── cursadas/2026/             # Material específico del año
+└── scripts/                   # build.sh · export.sh
 ```
 
-## ✍️ Cómo agregar o editar contenido
+## ✍️ Editar contenido
 
 Cada unidad tiene hasta tres archivos Markdown:
 
 | Archivo | Se ve con | Formato |
 |---|---|---|
-| `filminas.md` | `slides.html` | Diapositivas Reveal.js, separadas por `---` |
+| `filminas.md` | Marp → `filminas.html` | Diapositivas separadas por `---` |
 | `teoria.md` | `doc.html` | Documento largo |
 | `practico.md` | `doc.html` | Guía de laboratorio |
 
-### Sintaxis de filminas
+### Sintaxis de filminas (Marp)
 
-- Separá diapositivas con `---` en una línea sola.
-- Portada / cierre: primera línea del slide `<!-- .slide: class="portada" -->`.
-- Notas del presentador: bloque `Note:` (se ven con la tecla **S**).
-- Callouts semánticos:
+- Cada archivo empieza con front-matter: `marp: true`, `theme: arys`.
+- Diapositivas separadas por `---` en línea sola.
+- Portada / cierre: `<!-- _class: portada -->` como primera línea del slide.
+- Notas del docente: comentario HTML `<!-- ... -->` (visibles en modo presentador).
+- Imágenes con alto fijo: `![h:320](../../assets/img/diagrama.svg)`.
+- Callouts, columnas y tarjetas (HTML embebido, estilado por el tema):
 
 ```html
 <div class="nota amenaza"><span class="rot">Riesgo</span>Texto…</div>
 <div class="nota control"><span class="rot">Defensa</span>Texto…</div>
-<div class="nota legal"><span class="rot">Legal</span>Texto…</div>
-<div class="nota red"><span class="rot">Red</span>Texto…</div>
-```
-
-- Columnas: `<div class="cols">…</div>` (o `cols c3` para tres).
-- Tarjetas: `<div class="tarjetas"><div class="t"><b>Título</b>…</div></div>`.
-
-### Vista previa local
-
-```bash
-# Desde la raíz del repo
-python3 -m http.server 8000
-# Abrir http://localhost:8000/
-```
-
-### Exportar filminas a PDF
-
-Abrir la presentación con `?print-pdf` y guardar como PDF desde el navegador:
-
-```
-http://localhost:8000/slides.html?md=unidades/u02-seguridad-fisica/filminas.md&print-pdf
+<div class="cols"><div>…</div><div>…</div></div>
+<div class="tarjetas"><div class="t"><b>Título</b>…</div></div>
 ```
 
 ## 🎨 Identidad visual
 
-Base institucional **UNPSJB** (azul oficial + amarillo-anaranjado del escudo)
-combinada con una identidad propia de la materia. Ver
+Base institucional **UNPSJB** (azul `#004992` + amarillo-anaranjado `#FF9900` del
+escudo) combinada con una identidad propia de la materia. Ver
 [`identidad/GUIA-IDENTIDAD.md`](identidad/GUIA-IDENTIDAD.md).
-
-## 🚀 Publicar en GitHub Pages
-
-1. Crear el repositorio `ARyS` en GitHub y subir este contenido.
-2. **Settings → Pages → Source: GitHub Actions**.
-3. El workflow `pages.yml` publica en cada push a `main`.
 
 ## 📊 Estado del contenido
 
@@ -121,5 +131,5 @@ combinada con una identidad propia de la materia. Ver
 
 - Material educativo de la cátedra. Los escudos e isologos de la UNPSJB son
   propiedad de la Universidad y se usan según su Manual de Identidad Institucional.
-- [Reveal.js](https://revealjs.com/) y [marked](https://marked.js.org/) se
-  incluyen bajo licencia MIT (ver `assets/vendor/*/LICENSE`).
+- Filminas generadas con [Marp](https://marp.app/) (MIT). Lector de documentos con
+  [marked](https://marked.js.org/) (MIT, incluido en `assets/vendor/`).

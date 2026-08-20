@@ -1,12 +1,24 @@
-<!-- .slide: class="portada" -->
+---
+marp: true
+theme: arys
+paginate: true
+footer: 'ARyS · IF046 · UNPSJB Trelew'
+---
+
+<!-- _class: portada -->
+<!-- _paginate: false -->
+<!-- _footer: '' -->
+
 # Seguridad Física
 ## Unidad 2 — El primer perímetro
 
 <div class="meta">ARyS · IF046 · UNPSJB Trelew · 2026</div>
 
-Note:
+<!--
+Nota del docente:
 Clase teórica de 3 horas. Arrancar con la pregunta del axioma: si alguien
 tiene acceso físico a la máquina, ¿sigue siendo tuya?
+-->
 
 ---
 
@@ -74,25 +86,7 @@ físico compromete además Confidencialidad e Integridad.</div>
 
 Nunca un único control. **Capas concéntricas**:
 
-```
-   ┌──────────────────────────────────────────────┐
-   │ 1. PERÍMETRO   cerco, portón, iluminación    │
-   │  ┌────────────────────────────────────────┐  │
-   │  │ 2. EDIFICIO  recepción, torniquete     │  │
-   │  │  ┌──────────────────────────────────┐  │  │
-   │  │  │ 3. SALA   esclusa, tarjeta+PIN   │  │  │
-   │  │  │  ┌────────────────────────────┐  │  │  │
-   │  │  │  │ 4. RACK  jaula, cerradura  │  │  │  │
-   │  │  │  │  ┌──────────────────────┐  │  │  │  │
-   │  │  │  │  │ 5. EQUIPO  FDE, TPM  │  │  │  │  │
-   │  │  │  │  └──────────────────────┘  │  │  │  │
-   │  │  │  └────────────────────────────┘  │  │  │
-   │  │  └──────────────────────────────────┘  │  │
-   │  └────────────────────────────────────────┘  │
-   └──────────────────────────────────────────────┘
-```
-
-Cada capa **retrasa** al atacante y **genera evidencia**.
+![h:400](../../assets/img/defensa-en-profundidad.svg)
 
 ---
 
@@ -606,7 +600,10 @@ legales podemos hacerlo nosotros.</div>
 
 ---
 
-<!-- .slide: class="portada" -->
+<!-- _class: portada -->
+<!-- _paginate: false -->
+<!-- _footer: '' -->
+
 # ¿Preguntas?
 
 <div class="meta">Material: github.com/bzappellini/ARyS · Campus virtual UNPSJB</div>

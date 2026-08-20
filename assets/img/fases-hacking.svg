@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" font-family="system-ui, 'Segoe UI', 'DejaVu Sans', sans-serif" role="img" aria-label="Ciclo de las cinco fases del hacking ético">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#FFC061"/>
+    </marker>
+    <marker id="ahd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6C7A8A"/>
+    </marker>
+  </defs>
+
+  <!-- Focus badge -->
+  <text x="520" y="280" text-anchor="middle" font-size="17" fill="#9FB2C7">Foco de la</text>
+  <text x="520" y="304" text-anchor="middle" font-size="20" font-weight="700" fill="#FF9900">materia</text>
+  <text x="520" y="328" text-anchor="middle" font-size="15" fill="#9FB2C7">fases 1 · 2 · 3</text>
+
+  <!-- connecting arcs (pentagon around center 520,270 r~210) -->
+  <g fill="none" stroke-width="3">
+    <path d="M 560 78 A 210 210 0 0 1 719 200"  stroke="#FFC061" marker-end="url(#ah)"/>
+    <path d="M 726 240 A 210 210 0 0 1 640 447" stroke="#FFC061" marker-end="url(#ah)"/>
+    <path d="M 400 447 A 210 210 0 0 1 314 240" stroke="#6C7A8A" marker-end="url(#ahd)"/>
+    <path d="M 321 200 A 210 210 0 0 1 480 78"  stroke="#6C7A8A" marker-end="url(#ahd)"/>
+  </g>
+  <!-- arc between node4 and node5 bottom -->
+  <path d="M 615 470 A 210 210 0 0 1 425 470" fill="none" stroke="#6C7A8A" stroke-width="3" marker-end="url(#ahd)"/>
+
+  <!-- Nodes -->
+  <!-- 1 top -->
+  <g>
+    <circle cx="520" cy="62" r="46" fill="#FF9900"/>
+    <text x="520" y="58" text-anchor="middle" font-size="30" font-weight="800" fill="#021C36">1</text>
+    <text x="520" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#021C36">RECON</text>
+    <text x="520" y="132" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">Reconocimiento</text>
+  </g>
+  <!-- 2 upper right -->
+  <g>
+    <circle cx="763" cy="222" r="46" fill="#FF9900"/>
+    <text x="763" y="230" text-anchor="middle" font-size="30" font-weight="800" fill="#021C36">2</text>
+    <text x="763" y="292" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">Escaneo</text>
+  </g>
+  <!-- 3 lower right -->
+  <g>
+    <circle cx="672" cy="470" r="46" fill="#FF9900"/>
+    <text x="672" y="478" text-anchor="middle" font-size="30" font-weight="800" fill="#021C36">3</text>
+    <text x="672" y="540" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">Obtener acceso</text>
+  </g>
+  <!-- 4 lower left -->
+  <g>
+    <circle cx="368" cy="470" r="46" fill="#243B57"/>
+    <circle cx="368" cy="470" r="46" fill="none" stroke="#6FA8E0" stroke-width="2"/>
+    <text x="368" y="478" text-anchor="middle" font-size="30" font-weight="800" fill="#6FA8E0">4</text>
+    <text x="368" y="540" text-anchor="middle" font-size="18" font-weight="600" fill="#9FB2C7">Mantener acceso</text>
+  </g>
+  <!-- 5 upper left -->
+  <g>
+    <circle cx="277" cy="222" r="46" fill="#243B57"/>
+    <circle cx="277" cy="222" r="46" fill="none" stroke="#6FA8E0" stroke-width="2"/>
+    <text x="277" y="230" text-anchor="middle" font-size="30" font-weight="800" fill="#6FA8E0">5</text>
+    <text x="277" y="292" text-anchor="middle" font-size="18" font-weight="600" fill="#9FB2C7">Borrar huellas</text>
+  </g>
+</svg>

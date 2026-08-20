@@ -1,12 +1,24 @@
-<!-- .slide: class="portada" -->
+---
+marp: true
+theme: arys
+paginate: true
+footer: 'ARyS · IF046 · UNPSJB Trelew'
+---
+
+<!-- _class: portada -->
+<!-- _paginate: false -->
+<!-- _footer: '' -->
+
 # Hacking Ético
 ## Unidad 3 — Reconocimiento, escaneo y acceso
 
 <div class="meta">ARyS · IF046 · UNPSJB Trelew · 2026</div>
 
-Note:
+<!--
+Nota del docente:
 Clase teórica. El eje legal va PRIMERO y se repite. Sin autorización escrita,
 todo lo que sigue es delito. Arrancar por ahí, no por las herramientas.
+-->
 
 ---
 
@@ -124,11 +136,7 @@ trabajo sea <strong>repetible y auditable</strong>.</div>
 
 ## Las fases del hacking ético
 
-```
-  1. Reconocimiento  →  2. Escaneo  →  3. Obtener acceso
-                                              │
-        5. Borrado de huellas  ←  4. Mantener acceso
-```
+![h:300](../../assets/img/fases-hacking.svg)
 
 El programa de la materia se enfoca en las **tres primeras**:
 **Reconocimiento, Escaneo y Acceso.**
@@ -353,19 +361,7 @@ final): es más rápido y más discreto que un connect completo.</div>
 
 ## Anatomía del escaneo TCP SYN
 
-```
-   Atacante                     Objetivo
-      │                            │
-      │──────  SYN  ──────────────▶│   puerto ABIERTO:
-      │◀─────  SYN/ACK  ───────────│   responde SYN/ACK
-      │──────  RST  ──────────────▶│   cortamos antes del ACK
-      │                            │
-      │──────  SYN  ──────────────▶│   puerto CERRADO:
-      │◀─────  RST  ───────────────│   responde RST
-      │                            │
-      │──────  SYN  ──────────────▶│   puerto FILTRADO:
-      │        (silencio)          │   firewall descarta, sin respuesta
-```
+![h:330](../../assets/img/escaneo-tcp.svg)
 
 El estado del puerto se deduce de **cómo responde** (o si no responde).
 
@@ -587,7 +583,10 @@ capture.</div>
 
 ---
 
-<!-- .slide: class="portada" -->
+<!-- _class: portada -->
+<!-- _paginate: false -->
+<!-- _footer: '' -->
+
 # ¿Preguntas?
 
 <div class="meta">Material: github.com/bzappellini/ARyS · Campus virtual UNPSJB</div>

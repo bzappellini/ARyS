@@ -1,0 +1,139 @@
+/* @theme arys */
+/*
+   ARyS — Tema Marp
+   Identidad institucional UNPSJB (azul #004992 + naranja #FF9900 del escudo)
+   combinada con la paleta semántica de la materia.
+   Formato 16:9 (1280×720).
+*/
+@import 'default';
+
+:root {
+  --azul-900:#021C36; --azul-800:#03294F; --azul-700:#003C7A;
+  --azul-600:#004992; --azul-500:#0A63C4; --azul-300:#6FA8E0; --azul-100:#D6E6F7;
+  --naranja:#FF9900; --naranja-claro:#FFC061;
+  --red:#35C4DC; --amenaza:#E5484D; --control:#3DA35D; --evidencia:#A78BFA;
+  --texto:#E8EEF6; --tenue:#9FB2C7;
+  --mono: "JetBrains Mono","Fira Code","DejaVu Sans Mono",Consolas,monospace;
+  --sans: -apple-system,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans",sans-serif;
+  --titulo: "Trebuchet MS","Verdana","DejaVu Sans",var(--sans);
+}
+
+/* ---------- Slide base ---------- */
+section {
+  width: 1280px; height: 720px;
+  padding: 56px 68px 76px;
+  background-color: var(--azul-900);
+  background-image:
+    radial-gradient(1100px 640px at 12% -12%, rgba(10,99,196,.45), transparent 60%),
+    radial-gradient(820px 560px at 100% 112%, rgba(53,196,220,.15), transparent 60%);
+  color: var(--texto);
+  font-family: var(--sans);
+  font-size: 25px;
+  line-height: 1.5;
+  letter-spacing: .1px;
+}
+
+/* Institutional bottom band on every slide */
+section::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+  background: linear-gradient(90deg, var(--azul-600) 0 55%, var(--naranja) 55% 100%);
+}
+
+/* ---------- Headings ---------- */
+h1,h2,h3,h4 { font-family: var(--titulo); color: #fff; line-height: 1.12; margin: 0 0 .5em; }
+h1 { font-size: 1.95em; letter-spacing: -.5px; }
+h2 {
+  font-size: 1.36em; display: inline-block;
+  padding-bottom: .16em; margin-bottom: .55em;
+  border-bottom: 4px solid var(--naranja);
+}
+h3 { font-size: 1.05em; color: var(--azul-300); }
+h4 { font-size: .68em; color: var(--red); text-transform: uppercase; letter-spacing: .1em; }
+
+/* ---------- Text ---------- */
+strong { color: var(--naranja-claro); }
+em { color: var(--azul-300); font-style: normal; }
+a { color: var(--naranja-claro); text-decoration: none; border-bottom: 1px solid rgba(255,192,97,.4); }
+
+ul, ol { margin: .1em 0 .1em .2em; padding-left: 1.1em; }
+li { margin-bottom: .32em; }
+li::marker { color: var(--naranja); }
+ol li::marker { color: var(--red); font-weight: 700; }
+
+/* ---------- Code ---------- */
+code {
+  font-family: var(--mono); font-size: .86em;
+  background: rgba(53,196,220,.14); color: #9EE7F5;
+  padding: .08em .34em; border-radius: 5px;
+}
+pre {
+  background: #01121F; border: 1px solid rgba(111,168,224,.22);
+  border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  padding: .5em .2em; font-size: .58em; line-height: 1.45;
+}
+pre code { background: none; color: #D5E3F0; padding: 0; }
+
+/* ---------- Tables ---------- */
+table { border-collapse: collapse; width: 100%; font-size: .8em; margin: .3em 0; }
+th { background: rgba(10,99,196,.35); color: #fff; border-bottom: 2px solid var(--naranja); text-align: left; padding: .38em .6em; }
+td { border-bottom: 1px solid rgba(180,192,206,.16); padding: .34em .6em; color: var(--texto); }
+
+/* ---------- Blockquote (definiciones) ---------- */
+blockquote {
+  border-left: 5px solid var(--naranja);
+  background: rgba(10,99,196,.16);
+  border-radius: 0 10px 10px 0;
+  padding: .5em 1em; margin: .3em 0; font-size: .92em;
+}
+blockquote::before, blockquote::after { content: none; }
+
+/* ---------- Callouts .nota ---------- */
+.nota {
+  border-radius: 10px; padding: .55em .9em; font-size: .82em; margin: .35em 0;
+  border-left: 5px solid var(--azul-300); background: rgba(111,168,224,.12);
+}
+.nota.amenaza { border-left-color: var(--amenaza);   background: rgba(229,72,77,.14); }
+.nota.control { border-left-color: var(--control);   background: rgba(61,163,93,.14); }
+.nota.legal   { border-left-color: var(--evidencia); background: rgba(167,139,250,.14); }
+.nota.red     { border-left-color: var(--red);       background: rgba(53,196,220,.12); }
+.nota .rot {
+  display: block; text-transform: uppercase; letter-spacing: .1em;
+  font-size: .66em; font-weight: 700; opacity: .85; margin-bottom: .15em;
+}
+
+/* ---------- Columns ---------- */
+.cols  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3em; align-items: start; }
+.cols.c3 { grid-template-columns: repeat(3,1fr); }
+.cols > div > h3:first-child { margin-top: 0; }
+
+/* ---------- Cards ---------- */
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: .7em; }
+.tarjetas .t {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(111,168,224,.25);
+  border-top: 3px solid var(--naranja); border-radius: 10px; padding: .55em .75em; font-size: .74em;
+}
+.tarjetas .t b { display: block; color: #fff; margin-bottom: .12em; font-size: 1.06em; }
+
+/* ---------- Centered figures ---------- */
+p > img { display: block; margin: .2em auto; }
+figure { margin: .2em auto; text-align: center; }
+figure img { max-height: 470px; }
+figcaption { font-size: .7em; color: var(--tenue); margin-top: .3em; }
+
+/* ---------- Portada / cierre ---------- */
+section.portada { justify-content: center; text-align: center; }
+section.portada h1 {
+  font-size: 2.5em;
+  background: linear-gradient(100deg,#fff 25%,var(--naranja-claro) 92%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+section.portada h2 { border: 0; display: block; color: var(--azul-300); font-weight: 400; }
+section.portada .meta {
+  margin-top: 1.3em; font-size: .5em; color: var(--tenue);
+  letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* ---------- Header / footer / pagination ---------- */
+header { color: var(--tenue); font-size: .5em; letter-spacing: .06em; text-transform: uppercase; }
+footer { color: rgba(159,178,199,.7); font-size: .52em; letter-spacing: .05em; }
+section::after { /* pagination number */ color: var(--naranja); font-size: .5em; font-family: var(--mono); }

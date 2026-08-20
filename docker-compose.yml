@@ -1,0 +1,7 @@
+services:
+  arys:
+    build: .
+    container_name: arys-sitio
+    ports:
+      - "8080:80"
+    restart: unless-stopped

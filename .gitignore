@@ -5,8 +5,12 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
-# Temporales
+# Node
+node_modules/
+# Filminas generadas por Marp (se regeneran en build / CI / Docker)
+unidades/**/filminas.html
+# Exportaciones locales
+*.pdf
+*.pptx
 *.tmp
 *~
-# Exportaciones locales de filminas a PDF
-*.slides.pdf

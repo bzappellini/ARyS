@@ -1,12 +1,24 @@
-<!-- .slide: class="portada" -->
+---
+marp: true
+theme: arys
+paginate: true
+footer: 'ARyS · IF046 · UNPSJB Trelew'
+---
+
+<!-- _class: portada -->
+<!-- _paginate: false -->
+<!-- _footer: '' -->
+
 # Administración de Redes y Seguridad
 ## Presentación de la materia
 
 <div class="meta">IF046 · UNPSJB Trelew · 2026</div>
 
-Note:
+<!--
+Nota del docente:
 Diapositivas de presentación. Contenido a completar/actualizar sobre la base de
 años anteriores (ver Drive de la cátedra).
+-->
 
 ---
 
@@ -45,7 +57,10 @@ base de las presentaciones de años anteriores.</div>
 
 ---
 
-<!-- .slide: class="portada" -->
+<!-- _class: portada -->
+<!-- _paginate: false -->
+<!-- _footer: '' -->
+
 # ¡Bienvenidos!
 
 <div class="meta">Material: github.com/bzappellini/ARyS · Campus virtual UNPSJB</div>
