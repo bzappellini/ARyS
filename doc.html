@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material · ARyS</title>
+  <link rel="icon" href="identidad/assets/arys-isotipo.svg">
+  <link rel="stylesheet" href="identidad/arys-tokens.css">
+  <link rel="stylesheet" href="assets/css/arys-site.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="interior">
+      <img class="escudo" src="identidad/assets/unpsjb-escudo-blanco.png" alt="Escudo UNPSJB">
+      <div class="titulos">
+        <h1>AR<span class="y">y</span>S</h1>
+        <p>Administración de Redes y Seguridad</p>
+        <span class="codigo">IF046 · UNPSJB Trelew</span>
+      </div>
+      <a class="btn acento" href="index.html">← Índice</a>
+    </div>
+  </header>
+
+  <main>
+    <article class="doc" id="doc">Cargando…</article>
+  </main>
+
+  <footer class="pie">
+    <img src="identidad/assets/unpsjb-escudo.png" alt="">
+    Universidad Nacional de la Patagonia San Juan Bosco · Facultad de Ingeniería · Sede Trelew
+  </footer>
+
+  <script src="assets/vendor/marked/marked.min.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const md = params.get('md');
+    const target = document.getElementById('doc');
+
+    // Same-origin relative paths only.
+    const isSafe = (p) => p && !/^[a-z]+:/i.test(p) && !p.startsWith('//');
+
+    if (!isSafe(md)) {
+      target.innerHTML = '<h1>Material</h1><p>Elegí un documento desde el <a href="index.html">índice</a>.</p>';
+    } else {
+      fetch(md)
+        .then(r => { if (!r.ok) throw new Error(`${r.status} — ${md}`); return r.text(); })
+        .then(text => {
+          target.innerHTML = marked.parse(text);
+          const h1 = target.querySelector('h1');
+          if (h1) document.title = `${h1.textContent} · ARyS`;
+        })
+        .catch(err => {
+          target.innerHTML = `<h1>No se pudo cargar el material</h1><p><code>${err.message}</code></p>
+                              <p>Volver al <a href="index.html">índice</a>.</p>`;
+        });
+    }
+  </script>
+</body>
+</html>

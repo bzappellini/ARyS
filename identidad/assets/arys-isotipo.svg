@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ARyS isotype: network inside a shield">
+  <defs>
+    <linearGradient id="arysShield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A63C4"/>
+      <stop offset="1" stop-color="#004992"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield: security -->
+  <path d="M256 32 L448 104 V282 C448 392 256 480 256 480 C256 480 64 392 64 282 V104 Z"
+        fill="url(#arysShield)"/>
+  <path d="M256 32 L448 104 V282 C448 392 256 480 256 480 C256 480 64 392 64 282 V104 Z"
+        fill="none" stroke="#FF9900" stroke-width="14"/>
+
+  <!-- Network: nodes and links -->
+  <g stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" opacity="0.92">
+    <line x1="256" y1="168" x2="160" y2="248"/>
+    <line x1="256" y1="168" x2="352" y2="248"/>
+    <line x1="160" y1="248" x2="256" y2="332"/>
+    <line x1="352" y1="248" x2="256" y2="332"/>
+    <line x1="160" y1="248" x2="352" y2="248"/>
+  </g>
+  <g fill="#FFFFFF">
+    <circle cx="160" cy="248" r="27"/>
+    <circle cx="352" cy="248" r="27"/>
+    <circle cx="256" cy="332" r="27"/>
+  </g>
+  <!-- Guarded node: the asset under protection -->
+  <circle cx="256" cy="168" r="34" fill="#FF9900"/>
+  <circle cx="256" cy="168" r="34" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+</svg>

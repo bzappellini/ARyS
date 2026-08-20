@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+Thumbs.db
+# Editores
+.vscode/
+.idea/
+*.swp
+# Temporales
+*.tmp
+*~
+# Exportaciones locales de filminas a PDF
+*.slides.pdf

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filminas · ARyS</title>
+  <link rel="icon" href="identidad/assets/arys-isotipo.svg">
+  <link rel="stylesheet" href="assets/vendor/reveal/dist/reset.css">
+  <link rel="stylesheet" href="assets/vendor/reveal/dist/reveal.css">
+  <link rel="stylesheet" href="assets/vendor/reveal/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="identidad/arys-tokens.css">
+  <link rel="stylesheet" href="assets/css/arys-slides.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown>
+        <textarea data-template># Cargando…</textarea>
+      </section>
+    </div>
+    <div class="pie-marca">
+      <img src="identidad/assets/unpsjb-escudo-blanco.png" alt="UNPSJB">
+      <span>ARyS · IF046 · UNPSJB Trelew</span>
+    </div>
+  </div>
+
+  <script src="assets/vendor/reveal/dist/reveal.js"></script>
+  <script src="assets/vendor/reveal/plugin/markdown/markdown.js"></script>
+  <script src="assets/vendor/reveal/plugin/highlight/highlight.js"></script>
+  <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+  <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+  <script src="assets/vendor/reveal/plugin/search/search.js"></script>
+  <script>
+    const REVEAL_OPTS = {
+      hash: true,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      center: false,
+      transition: 'fade',
+      transitionSpeed: 'fast',
+      width: 1280,
+      height: 760,
+      margin: 0.06,
+      minScale: 0.2,
+      maxScale: 1.6,
+      pdfSeparateFragments: false,
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+    };
+
+    const params = new URLSearchParams(location.search);
+    const md = params.get('md');
+
+    // Only same-origin relative paths are accepted, so a crafted URL cannot
+    // pull slide content from an external host.
+    const isSafe = (p) => p && !/^[a-z]+:/i.test(p) && !p.startsWith('//');
+
+    const render = (text) => {
+      document.querySelector('.slides textarea').textContent = text;
+      Reveal.initialize(REVEAL_OPTS);
+    };
+
+    if (!isSafe(md)) {
+      render('# ARyS\n## Administración de Redes y Seguridad\n\nElegí una presentación desde el [índice](index.html).');
+    } else {
+      fetch(md)
+        .then(r => { if (!r.ok) throw new Error(`${r.status} — ${md}`); return r.text(); })
+        .then(text => {
+          const t = text.match(/^#\s+(.+)$/m);
+          if (t) document.title = `${t[1]} · ARyS`;
+          render(text);
+        })
+        .catch(err => render(
+          `# No se pudo cargar la presentación\n\n\`${err.message}\`\n\nVolver al [índice](index.html).`
+        ));
+    }
+  </script>
+</body>
+</html>
