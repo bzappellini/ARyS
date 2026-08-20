@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Exporta las filminas a PDF y PPTX usando la imagen oficial de Marp (incluye Chromium).
 # Uso:  ./scripts/export.sh [pdf|pptx]   (por defecto: pdf)
-set -euo pipefail
+set -eu
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 FMT="${1:-pdf}"
 mkdir -p "$ROOT/dist"

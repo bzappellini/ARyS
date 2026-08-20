@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Genera las filminas HTML de todas las unidades con Marp.
 # Marp autocarga marp.config.mjs (HTML habilitado + tema arys) desde la raíz.
-set -euo pipefail
+set -eu
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 MARP="${MARP_BIN:-marp}"
