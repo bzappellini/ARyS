@@ -74,9 +74,22 @@ pre {
 pre code { background: none; color: #D5E3F0; padding: 0; }
 
 /* ---------- Tables ---------- */
-table { border-collapse: collapse; width: 100%; font-size: .8em; margin: .3em 0; }
-th { background: rgba(10,99,196,.35); color: #fff; border-bottom: 2px solid var(--naranja); text-align: left; padding: .38em .6em; }
-td { border-bottom: 1px solid rgba(180,192,206,.16); padding: .34em .6em; color: var(--texto); }
+/* !important para ganarle al tema `default` importado (fondos claros y color tenue). */
+section table { border-collapse: collapse; width: 100%; font-size: .8em; margin: .3em 0; }
+section table tr { background: transparent !important; }
+section table th {
+  background-color: #0A3D73 !important; color: #FFFFFF !important; font-weight: 700;
+  border: none !important; border-bottom: 2px solid var(--naranja) !important;
+  text-align: left; padding: .42em .7em;
+}
+section table td {
+  color: #EEF4FB !important;
+  background-color: transparent !important;
+  border: none !important; border-bottom: 1px solid rgba(180,192,206,.18) !important;
+  padding: .4em .7em;
+}
+section table tbody tr:nth-child(even) td { background-color: rgba(255,255,255,.06) !important; }
+section table td strong { color: var(--naranja-claro) !important; }
 
 /* ---------- Blockquote (definiciones) ---------- */
 blockquote {
