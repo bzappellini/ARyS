@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 430" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Los factores de autenticación y la autenticación multifactor">
+  <text x="540" y="42" text-anchor="middle" font-size="16" fill="#9FB2C7">MFA = combinar factores de <tspan fill="#FFC061" font-weight="700">categorías distintas</tspan> (no dos contraseñas)</text>
+
+  <!-- Factor 1: algo que sabés -->
+  <rect x="50" y="80" width="230" height="230" rx="14" fill="rgba(53,196,220,.08)" stroke="#35C4DC" stroke-width="2"/>
+  <text x="165" y="130" text-anchor="middle" font-size="44">🧠</text>
+  <text x="165" y="172" text-anchor="middle" font-size="18" font-weight="800" fill="#9EE7F5">Algo que SABÉS</text>
+  <text x="165" y="204" text-anchor="middle" font-size="13.5" fill="#C9D4E0">contraseña, PIN,</text>
+  <text x="165" y="224" text-anchor="middle" font-size="13.5" fill="#C9D4E0">respuesta secreta</text>
+  <text x="165" y="266" text-anchor="middle" font-size="12" fill="#F2A6A8">− se roba, se adivina,</text>
+  <text x="165" y="284" text-anchor="middle" font-size="12" fill="#F2A6A8">se reutiliza</text>
+
+  <!-- Factor 2: algo que tenés -->
+  <rect x="305" y="80" width="230" height="230" rx="14" fill="rgba(255,153,0,.10)" stroke="#FF9900" stroke-width="2"/>
+  <text x="420" y="130" text-anchor="middle" font-size="44">📱</text>
+  <text x="420" y="172" text-anchor="middle" font-size="18" font-weight="800" fill="#FFC061">Algo que TENÉS</text>
+  <text x="420" y="204" text-anchor="middle" font-size="13.5" fill="#C9D4E0">token, celular (OTP),</text>
+  <text x="420" y="224" text-anchor="middle" font-size="13.5" fill="#C9D4E0">llave FIDO2</text>
+  <text x="420" y="266" text-anchor="middle" font-size="12" fill="#8FE0A8">+ el atacante remoto</text>
+  <text x="420" y="284" text-anchor="middle" font-size="12" fill="#8FE0A8">no lo tiene físicamente</text>
+
+  <!-- Factor 3: algo que sos -->
+  <rect x="560" y="80" width="230" height="230" rx="14" fill="rgba(167,139,250,.10)" stroke="#A78BFA" stroke-width="2"/>
+  <text x="675" y="130" text-anchor="middle" font-size="44">👁️</text>
+  <text x="675" y="172" text-anchor="middle" font-size="18" font-weight="800" fill="#C4B5FD">Algo que SOS</text>
+  <text x="675" y="204" text-anchor="middle" font-size="13.5" fill="#C9D4E0">huella, rostro, iris</text>
+  <text x="675" y="224" text-anchor="middle" font-size="13.5" fill="#C9D4E0">(biometría)</text>
+  <text x="675" y="266" text-anchor="middle" font-size="12" fill="#F2A6A8">− no se puede</text>
+  <text x="675" y="284" text-anchor="middle" font-size="12" fill="#F2A6A8">revocar (Unidad 2)</text>
+
+  <!-- Contexto -->
+  <rect x="815" y="80" width="215" height="230" rx="14" fill="rgba(61,163,93,.08)" stroke="#3DA35D" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="922" y="130" text-anchor="middle" font-size="44">📍</text>
+  <text x="922" y="172" text-anchor="middle" font-size="17" font-weight="800" fill="#8FE0A8">…y CONTEXTO</text>
+  <text x="922" y="204" text-anchor="middle" font-size="13" fill="#C9D4E0">ubicación, dispositivo,</text>
+  <text x="922" y="224" text-anchor="middle" font-size="13" fill="#C9D4E0">hora, riesgo</text>
+  <text x="922" y="266" text-anchor="middle" font-size="12" fill="#B9C7D8">autenticación</text>
+  <text x="922" y="284" text-anchor="middle" font-size="12" fill="#B9C7D8">adaptativa</text>
+
+  <text x="540" y="360" text-anchor="middle" font-size="14.5" fill="#C9D4E0">Un solo factor es frágil. <tspan fill="#FFC061" font-weight="700">Dos o más de categorías distintas</tspan> = MFA.</text>
+  <text x="540" y="398" text-anchor="middle" font-size="13" fill="#8A97A6">NIST SP 800-63B · el futuro sin contraseña: FIDO2 / passkeys</text>
+</svg>

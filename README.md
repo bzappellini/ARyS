@@ -124,7 +124,7 @@ escudo) combinada con una identidad propia de la materia. Ver
 | 4 · Sniffing | ✅ | ✅ | ✅ |
 | 5 · Firewall/IDS | ✅ | ✅ | ✅ |
 | 6 · Criptografía | ✅ | ✅ | ✅ |
-| 7 · Autenticación | ⬜ | ⬜ | ⬜ |
+| 7 · Autenticación | ✅ | ✅ | ✅ |
 | 8 · Monitoreo | ⬜ | ⬜ | ⬜ |
 
 ## 👥 Trabajar en equipo

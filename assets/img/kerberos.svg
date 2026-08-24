@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 500" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Flujo de autenticación de Kerberos con tickets">
+  <defs>
+    <marker id="k-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#FFC061"/></marker>
+    <marker id="k-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#35C4DC"/></marker>
+  </defs>
+
+  <!-- KDC box -->
+  <rect x="380" y="40" width="320" height="150" rx="14" fill="rgba(10,99,196,.14)" stroke="#6FA8E0" stroke-width="2.5"/>
+  <text x="540" y="66" text-anchor="middle" font-size="16" font-weight="800" fill="#C9DEF5">KDC · Centro de Distribución de Claves</text>
+  <rect x="404" y="82" width="130" height="86" rx="10" fill="#03294F" stroke="#3DA35D" stroke-width="2"/>
+  <text x="469" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#8FE0A8">AS</text>
+  <text x="469" y="140" text-anchor="middle" font-size="11.5" fill="#C9D4E0">autenticación</text>
+  <rect x="546" y="82" width="130" height="86" rx="10" fill="#03294F" stroke="#FFC061" stroke-width="2"/>
+  <text x="611" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#FFC061">TGS</text>
+  <text x="611" y="140" text-anchor="middle" font-size="11.5" fill="#C9D4E0">otorga tickets</text>
+
+  <!-- Cliente -->
+  <rect x="60" y="230" width="150" height="80" rx="12" fill="#0A2540" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="135" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#DCE7F3">Cliente</text>
+  <text x="135" y="288" text-anchor="middle" font-size="12" fill="#9FB2C7">(el usuario)</text>
+
+  <!-- Servicio -->
+  <rect x="870" y="230" width="150" height="80" rx="12" fill="#0A2540" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="945" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#DCE7F3">Servicio</text>
+  <text x="945" y="288" text-anchor="middle" font-size="12" fill="#9FB2C7">(app, servidor)</text>
+
+  <!-- Step 1: client -> AS, get TGT -->
+  <path d="M175 232 C 240 150, 330 120, 404 118" stroke="#FFC061" stroke-width="2.5" fill="none" marker-end="url(#k-a)"/>
+  <circle cx="255" cy="150" r="13" fill="#FF9900"/><text x="255" y="155" text-anchor="middle" font-size="14" font-weight="800" fill="#021C36">1</text>
+  <text x="250" y="200" text-anchor="middle" font-size="12.5" fill="#FFC061">pido acceso → recibo TGT</text>
+
+  <!-- Step 2: client -> TGS, get service ticket -->
+  <path d="M195 250 C 380 300, 470 210, 560 170" stroke="#FFC061" stroke-width="2.5" fill="none" marker-end="url(#k-a)"/>
+  <circle cx="430" cy="268" r="13" fill="#FF9900"/><text x="430" y="273" text-anchor="middle" font-size="14" font-weight="800" fill="#021C36">2</text>
+  <text x="430" y="300" text-anchor="middle" font-size="12.5" fill="#FFC061">presento TGT → recibo ticket de servicio</text>
+
+  <!-- Step 3: client -> service with service ticket -->
+  <path d="M210 280 L 870 280" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#k-b)"/>
+  <circle cx="540" cy="280" r="13" fill="#35C4DC"/><text x="540" y="285" text-anchor="middle" font-size="14" font-weight="800" fill="#021C36">3</text>
+  <text x="700" y="270" text-anchor="middle" font-size="12.5" fill="#9EE7F5">presento el ticket → acceso concedido</text>
+
+  <!-- captions -->
+  <text x="540" y="400" text-anchor="middle" font-size="14.5" fill="#C9D4E0">La contraseña <tspan fill="#FFC061" font-weight="700">nunca viaja</tspan> por la red; con el TGT pido varios servicios</text>
+  <text x="540" y="424" text-anchor="middle" font-size="14.5" fill="#C9D4E0">→ es la base del <tspan fill="#FFC061" font-weight="700">Single Sign-On</tspan> (RFC 4120)</text>
+  <text x="540" y="462" text-anchor="middle" font-size="12" fill="#8A97A6">Ataques a conocer: Pass-the-Ticket · Kerberoasting · Golden/Silver Ticket</text>
+</svg>
