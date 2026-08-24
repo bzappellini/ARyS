@@ -1,5 +1,6 @@
-# Revisores por defecto del repositorio de la cátedra.
-# GitHub sugiere/requiere revisión de estas personas en cada PR.
-# El autor de un PR no se revisa a sí mismo: siempre revisa el otro.
+# Revisor requerido de todos los Pull Requests de la cátedra.
+# Bruno revisa y aprueba todo lo que entra a main.
+# (Los PR del propio Bruno los mergea él como admin: GitHub no permite
+#  auto-aprobarse, por eso main no le exige aprobación a él.)
 
-* @bzappellini @LucasKrmpotic
+* @bzappellini
