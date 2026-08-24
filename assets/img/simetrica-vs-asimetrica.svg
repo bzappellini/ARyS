@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 480" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Cifrado simétrico versus asimétrico">
+  <defs>
+    <marker id="c-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9FB2C7"/></marker>
+    <g id="llave"><circle cx="0" cy="0" r="7" fill="none" stroke-width="4"/><line x1="5" y1="0" x2="20" y2="0" stroke-width="4"/><line x1="14" y1="0" x2="14" y2="7" stroke-width="4"/><line x1="19" y1="0" x2="19" y2="6" stroke-width="4"/></g>
+  </defs>
+
+  <!-- ===== SIMÉTRICA ===== -->
+  <text x="40" y="52" font-size="21" font-weight="800" fill="#FFFFFF">Simétrica</text>
+  <text x="40" y="74" font-size="14" fill="#9FB2C7">una MISMA clave secreta cifra y descifra</text>
+
+  <g text-anchor="middle" font-size="14" fill="#DCE7F3">
+    <rect x="40" y="100" width="130" height="54" rx="8" fill="#0A2540" stroke="#6FA8E0"/><text x="105" y="132">Emisor</text>
+    <rect x="470" y="100" width="130" height="54" rx="8" fill="#0A2540" stroke="#6FA8E0"/><text x="535" y="132">Receptor</text>
+    <rect x="250" y="104" width="140" height="46" rx="8" fill="#03294F" stroke="#3A4A5C"/><text x="320" y="132" font-size="12.5" fill="#9EE7F5">🔒 cifrado</text>
+  </g>
+  <path d="M170 127 L 250 127" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#c-a)"/>
+  <path d="M390 127 L 470 127" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#c-a)"/>
+  <!-- same key on both -->
+  <use href="#llave" x="96" y="180" stroke="#FF9900" fill="#FF9900"/>
+  <use href="#llave" x="526" y="180" stroke="#FF9900" fill="#FF9900"/>
+  <text x="105" y="210" text-anchor="middle" font-size="12" fill="#FFC061">clave K</text>
+  <text x="535" y="210" text-anchor="middle" font-size="12" fill="#FFC061">clave K</text>
+  <text x="760" y="118" font-size="14" fill="#8FE0A8">+ rápida (AES, ChaCha20)</text>
+  <text x="760" y="142" font-size="14" fill="#F2A6A8">− ¿cómo comparto K de forma segura?</text>
+
+  <line x1="40" y1="245" x2="1040" y2="245" stroke="#3A4A5C" stroke-width="1.5" stroke-dasharray="5 6"/>
+
+  <!-- ===== ASIMÉTRICA ===== -->
+  <text x="40" y="292" font-size="21" font-weight="800" fill="#FFFFFF">Asimétrica</text>
+  <text x="40" y="314" font-size="14" fill="#9FB2C7">un PAR de claves: pública cifra, privada descifra</text>
+
+  <g text-anchor="middle" font-size="14" fill="#DCE7F3">
+    <rect x="40" y="340" width="130" height="54" rx="8" fill="#0A2540" stroke="#6FA8E0"/><text x="105" y="372">Emisor</text>
+    <rect x="470" y="340" width="130" height="54" rx="8" fill="#0A2540" stroke="#6FA8E0"/><text x="535" y="372">Receptor</text>
+    <rect x="250" y="344" width="140" height="46" rx="8" fill="#03294F" stroke="#3A4A5C"/><text x="320" y="372" font-size="12.5" fill="#9EE7F5">🔒 cifrado</text>
+  </g>
+  <path d="M170 367 L 250 367" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#c-a)"/>
+  <path d="M390 367 L 470 367" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#c-a)"/>
+  <!-- public key at sender, private at receiver -->
+  <use href="#llave" x="96" y="420" stroke="#35C4DC" fill="#35C4DC"/>
+  <use href="#llave" x="526" y="420" stroke="#FF9900" fill="#FF9900"/>
+  <text x="105" y="450" text-anchor="middle" font-size="12" fill="#9EE7F5">pública (receptor)</text>
+  <text x="535" y="450" text-anchor="middle" font-size="12" fill="#FFC061">privada (receptor)</text>
+  <text x="760" y="358" font-size="14" fill="#8FE0A8">+ no hay secreto que compartir</text>
+  <text x="760" y="382" font-size="14" fill="#F2A6A8">− más lenta (RSA, ECC)</text>
+  <text x="760" y="418" font-size="13" fill="#C9D4E0">En la práctica se combinan:</text>
+  <text x="760" y="438" font-size="13" fill="#C9D4E0">asimétrica para <tspan fill="#FFC061">acordar</tspan> la clave,</text>
+  <text x="760" y="456" font-size="13" fill="#C9D4E0">simétrica para <tspan fill="#FFC061">cifrar</tspan> los datos</text>
+</svg>

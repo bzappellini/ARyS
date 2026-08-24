@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 500" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Funcionamiento de la firma digital: firmar y verificar">
+  <defs>
+    <marker id="f-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9FB2C7"/></marker>
+  </defs>
+
+  <!-- ===== FIRMAR (izquierda) ===== -->
+  <text x="60" y="42" font-size="20" font-weight="800" fill="#9EE7F5">FIRMAR · lo hace el emisor</text>
+  <g text-anchor="middle" font-size="13.5" fill="#DCE7F3">
+    <rect x="60" y="70" width="150" height="56" rx="8" fill="#0A2540" stroke="#3A4A5C"/><text x="135" y="103">Documento</text>
+    <rect x="60" y="180" width="150" height="50" rx="8" fill="#03294F" stroke="#35C4DC"/><text x="135" y="205" font-size="12.5" fill="#9EE7F5">hash (resumen)</text>
+    <rect x="60" y="300" width="150" height="56" rx="8" fill="#3a2a00" stroke="#FF9900"/><text x="135" y="326" font-size="12.5" fill="#FFC061">FIRMA</text>
+  </g>
+  <path d="M135 126 L 135 180" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#f-a)"/>
+  <text x="220" y="160" font-size="12" fill="#9FB2C7">función hash</text>
+  <path d="M135 230 L 135 300" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#f-a)"/>
+  <text x="150" y="270" font-size="12" fill="#FFC061" text-anchor="start">cifrar el hash con</text>
+  <text x="150" y="286" font-size="12" fill="#FFC061" text-anchor="start">la clave PRIVADA</text>
+
+  <!-- transmit -->
+  <text x="540" y="200" text-anchor="middle" font-size="13" fill="#C9D4E0">se envía</text>
+  <text x="540" y="220" text-anchor="middle" font-size="13" fill="#DCE7F3" font-weight="700">documento + firma</text>
+  <path d="M230 328 C 400 328, 420 240, 540 235" stroke="#9FB2C7" stroke-width="2" fill="none" stroke-dasharray="4 5" marker-end="url(#f-a)"/>
+  <line x1="480" y1="40" x2="480" y2="470" stroke="#3A4A5C" stroke-width="1.2" stroke-dasharray="5 6"/>
+
+  <!-- ===== VERIFICAR (derecha) ===== -->
+  <text x="620" y="42" font-size="20" font-weight="800" fill="#8FE0A8">VERIFICAR · lo hace el receptor</text>
+  <g text-anchor="middle" font-size="13.5" fill="#DCE7F3">
+    <rect x="620" y="70" width="150" height="56" rx="8" fill="#0A2540" stroke="#3A4A5C"/><text x="695" y="103">Documento</text>
+    <rect x="620" y="180" width="150" height="50" rx="8" fill="#03294F" stroke="#35C4DC"/><text x="695" y="205" font-size="12.5" fill="#9EE7F5">hash calculado</text>
+    <rect x="880" y="70" width="150" height="56" rx="8" fill="#3a2a00" stroke="#FF9900"/><text x="955" y="96" font-size="12.5" fill="#FFC061">FIRMA</text><text x="955" y="114" font-size="11" fill="#C9D4E0">recibida</text>
+    <rect x="880" y="180" width="150" height="50" rx="8" fill="#03294F" stroke="#35C4DC"/><text x="955" y="205" font-size="12.5" fill="#9EE7F5">hash descifrado</text>
+  </g>
+  <path d="M695 126 L 695 180" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#f-a)"/>
+  <path d="M955 126 L 955 180" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#f-a)"/>
+  <text x="1035" y="158" font-size="12" fill="#9EE7F5" text-anchor="end">descifrar con la</text>
+  <text x="1035" y="174" font-size="12" fill="#9EE7F5" text-anchor="end">clave PÚBLICA</text>
+
+  <!-- compare -->
+  <rect x="740" y="300" width="170" height="60" rx="10" fill="rgba(61,163,93,.14)" stroke="#3DA35D" stroke-width="2"/>
+  <text x="825" y="326" text-anchor="middle" font-size="14" font-weight="700" fill="#8FE0A8">¿coinciden?</text>
+  <text x="825" y="346" text-anchor="middle" font-size="12" fill="#C9D4E0">sí → auténtico e íntegro</text>
+  <path d="M695 230 C 695 280, 760 290, 748 305" stroke="#35C4DC" stroke-width="2" fill="none" marker-end="url(#f-a)"/>
+  <path d="M955 230 C 955 280, 890 290, 902 305" stroke="#35C4DC" stroke-width="2" fill="none" marker-end="url(#f-a)"/>
+
+  <text x="760" y="430" text-anchor="middle" font-size="13.5" fill="#C9D4E0">Aporta <tspan fill="#FFC061" font-weight="700">integridad</tspan>, <tspan fill="#FFC061" font-weight="700">autenticidad</tspan> y <tspan fill="#FFC061" font-weight="700">no repudio</tspan> (Unidad 1)</text>
+</svg>

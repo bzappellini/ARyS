@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 430" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Cadena de confianza de una PKI con certificados X.509">
+  <defs>
+    <marker id="p-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#FFC061"/></marker>
+  </defs>
+
+  <!-- Chain of trust -->
+  <g text-anchor="middle">
+    <!-- Root CA -->
+    <rect x="60" y="150" width="200" height="120" rx="12" fill="rgba(61,163,93,.12)" stroke="#3DA35D" stroke-width="2.5"/>
+    <text x="160" y="188" font-size="17" font-weight="800" fill="#8FE0A8">CA raíz</text>
+    <text x="160" y="212" font-size="12.5" fill="#C9D4E0">autofirmada</text>
+    <text x="160" y="238" font-size="12" fill="#9FB2C7">la raíz de la confianza</text>
+
+    <!-- Intermediate CA -->
+    <rect x="440" y="150" width="200" height="120" rx="12" fill="rgba(111,168,224,.12)" stroke="#6FA8E0" stroke-width="2.5"/>
+    <text x="540" y="188" font-size="17" font-weight="800" fill="#C9DEF5">CA intermedia</text>
+    <text x="540" y="212" font-size="12.5" fill="#C9D4E0">firmada por la raíz</text>
+    <text x="540" y="238" font-size="12" fill="#9FB2C7">emite certificados</text>
+
+    <!-- Server cert -->
+    <rect x="820" y="150" width="200" height="120" rx="12" fill="rgba(53,196,220,.12)" stroke="#35C4DC" stroke-width="2.5"/>
+    <text x="920" y="184" font-size="16" font-weight="800" fill="#9EE7F5">Certificado</text>
+    <text x="920" y="204" font-size="13" fill="#DCE7F3">del servidor (X.509)</text>
+    <text x="920" y="230" font-size="11.5" fill="#9FB2C7">clave pública + identidad</text>
+    <text x="920" y="248" font-size="11.5" fill="#9FB2C7">(ej. www.unp.edu.ar)</text>
+  </g>
+
+  <!-- Signing arrows -->
+  <path d="M260 210 L 440 210" stroke="#FFC061" stroke-width="3" fill="none" marker-end="url(#p-a)"/>
+  <text x="350" y="198" text-anchor="middle" font-size="12.5" fill="#FFC061">firma</text>
+  <path d="M640 210 L 820 210" stroke="#FFC061" stroke-width="3" fill="none" marker-end="url(#p-a)"/>
+  <text x="730" y="198" text-anchor="middle" font-size="12.5" fill="#FFC061">firma</text>
+
+  <!-- Browser trust store -->
+  <rect x="60" y="40" width="200" height="66" rx="10" fill="#0A2540" stroke="#3A4A5C"/>
+  <text x="160" y="68" text-anchor="middle" font-size="13.5" font-weight="700" fill="#DCE7F3">Navegador / SO</text>
+  <text x="160" y="88" text-anchor="middle" font-size="11.5" fill="#9FB2C7">confía en la CA raíz (almacén)</text>
+  <path d="M160 106 L 160 150" stroke="#3DA35D" stroke-width="2" fill="none" stroke-dasharray="4 4" marker-end="url(#p-a)"/>
+
+  <!-- Caption -->
+  <text x="540" y="330" text-anchor="middle" font-size="14.5" fill="#C9D4E0">Si confío en la raíz y cada eslabón firma al siguiente,</text>
+  <text x="540" y="352" text-anchor="middle" font-size="14.5" fill="#C9D4E0">puedo <tspan fill="#FFC061" font-weight="700">verificar la identidad</tspan> del servidor sin conocerlo de antes.</text>
+  <text x="540" y="392" text-anchor="middle" font-size="12.5" fill="#8A97A6">Let's Encrypt / ACME automatizan la emisión · Certificate Transparency audita lo emitido</text>
+</svg>
