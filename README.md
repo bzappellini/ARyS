@@ -122,7 +122,7 @@ escudo) combinada con una identidad propia de la materia. Ver
 | 2 · Seguridad Física | ✅ | ✅ | ✅ |
 | 3 · Hacking Ético | ✅ | ✅ | ✅ |
 | 4 · Sniffing | ✅ | ✅ | ✅ |
-| 5 · Firewall/IDS | ⬜ | ⬜ | ⬜ |
+| 5 · Firewall/IDS | ✅ | ✅ | ✅ |
 | 6 · Criptografía | ⬜ | ⬜ | ⬜ |
 | 7 · Autenticación | ⬜ | ⬜ | ⬜ |
 | 8 · Monitoreo | ⬜ | ⬜ | ⬜ |
