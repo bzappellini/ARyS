@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 480" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="ARP spoofing: el atacante se coloca en medio (MITM)">
+  <defs>
+    <marker id="ap-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6C7A8A"/></marker>
+    <marker id="ap-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#E5484D"/></marker>
+    <marker id="ap-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#35C4DC"/></marker>
+  </defs>
+
+  <!-- Nodes -->
+  <g text-anchor="middle">
+    <rect x="60" y="200" width="170" height="80" rx="12" fill="#0A2540" stroke="#6FA8E0" stroke-width="2"/>
+    <text x="145" y="234" font-size="19" font-weight="700" fill="#DCE7F3">Víctima</text>
+    <text x="145" y="258" font-size="13" fill="#9FB2C7">10.0.0.5</text>
+
+    <rect x="850" y="200" width="170" height="80" rx="12" fill="#0A2540" stroke="#6FA8E0" stroke-width="2"/>
+    <text x="935" y="228" font-size="19" font-weight="700" fill="#DCE7F3">Gateway</text>
+    <text x="935" y="250" font-size="13" fill="#9FB2C7">10.0.0.1</text>
+    <text x="935" y="268" font-size="12" fill="#9FB2C7">(salida a Internet)</text>
+
+    <rect x="455" y="40" width="170" height="86" rx="12" fill="#3a1416" stroke="#E5484D" stroke-width="2.5"/>
+    <text x="540" y="72" font-size="19" font-weight="800" fill="#F2A6A8">Atacante</text>
+    <text x="540" y="95" font-size="13" fill="#C9D4E0">10.0.0.66</text>
+    <text x="540" y="113" font-size="12" fill="#C9D4E0">MITM</text>
+  </g>
+
+  <!-- Legitimate (what should happen) - dashed grey -->
+  <path d="M230 250 L 850 250" stroke="#6C7A8A" stroke-width="2" stroke-dasharray="5 6" fill="none" marker-end="url(#ap-n)"/>
+  <text x="540" y="242" text-anchor="middle" font-size="13" fill="#8A97A6">flujo legítimo (así debería ir)</text>
+
+  <!-- ARP poison messages -->
+  <path d="M470 120 C 360 150, 250 175, 200 198" stroke="#E5484D" stroke-width="2" fill="none" stroke-dasharray="2 4" marker-end="url(#ap-a)"/>
+  <text x="300" y="150" text-anchor="middle" font-size="12" fill="#F2A6A8">"yo soy 10.0.0.1"</text>
+  <path d="M610 120 C 720 150, 830 175, 880 198" stroke="#E5484D" stroke-width="2" fill="none" stroke-dasharray="2 4" marker-end="url(#ap-a)"/>
+  <text x="780" y="150" text-anchor="middle" font-size="12" fill="#F2A6A8">"yo soy 10.0.0.5"</text>
+
+  <!-- Redirected real traffic through attacker -->
+  <path d="M230 270 C 360 340, 430 300, 500 210" stroke="#35C4DC" stroke-width="3" fill="none" marker-end="url(#ap-c)"/>
+  <path d="M580 210 C 650 300, 720 340, 850 275" stroke="#35C4DC" stroke-width="3" fill="none" marker-end="url(#ap-c)"/>
+  <text x="540" y="360" text-anchor="middle" font-size="14" fill="#9EE7F5">el tráfico real pasa <tspan font-weight="700" fill="#FFC061">por el atacante</tspan></text>
+
+  <!-- caption -->
+  <text x="540" y="430" text-anchor="middle" font-size="15" fill="#C9D4E0">ARP no autentica (RFC 826): respuestas falsas envenenan las tablas y</text>
+  <text x="540" y="452" text-anchor="middle" font-size="15" fill="#C9D4E0">colocan al atacante <tspan font-weight="700" fill="#F2A6A8">en el medio</tspan> — puede leer y modificar todo lo no cifrado</text>
+</svg>
