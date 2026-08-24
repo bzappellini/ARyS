@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 440" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Funcionamiento de TOTP: contraseña de un solo uso basada en tiempo">
+  <defs>
+    <marker id="o-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9FB2C7"/></marker>
+  </defs>
+
+  <text x="540" y="40" text-anchor="middle" font-size="16" fill="#9FB2C7">Una sola <tspan fill="#FFC061" font-weight="700">semilla secreta</tspan> compartida al inicio (por QR); nunca vuelve a viajar</text>
+
+  <!-- App -->
+  <rect x="70" y="90" width="220" height="120" rx="12" fill="#0A2540" stroke="#FF9900" stroke-width="2"/>
+  <text x="180" y="122" text-anchor="middle" font-size="17" font-weight="800" fill="#FFC061">📱 App (celular)</text>
+  <text x="180" y="150" text-anchor="middle" font-size="13" fill="#C9D4E0">Google Authenticator,</text>
+  <text x="180" y="168" text-anchor="middle" font-size="13" fill="#C9D4E0">Authy…</text>
+  <text x="180" y="196" text-anchor="middle" font-size="12.5" fill="#8FE0A8">🔑 tiene la semilla</text>
+
+  <!-- Server -->
+  <rect x="790" y="90" width="220" height="120" rx="12" fill="#0A2540" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="900" y="122" text-anchor="middle" font-size="17" font-weight="800" fill="#C9DEF5">🖥️ Servidor</text>
+  <text x="900" y="150" text-anchor="middle" font-size="13" fill="#C9D4E0">valida el código</text>
+  <text x="900" y="196" text-anchor="middle" font-size="12.5" fill="#8FE0A8">🔑 tiene la MISMA semilla</text>
+
+  <!-- Function boxes -->
+  <rect x="360" y="110" width="360" height="80" rx="10" fill="rgba(53,196,220,.10)" stroke="#35C4DC" stroke-width="2"/>
+  <text x="540" y="140" text-anchor="middle" font-size="14.5" fill="#9EE7F5">HMAC( semilla , tiempo actual )</text>
+  <text x="540" y="166" text-anchor="middle" font-size="13" fill="#C9D4E0">→ truncar → código de 6 dígitos</text>
+
+  <path d="M290 150 L 360 150" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#o-a)"/>
+  <path d="M720 150 L 790 150" stroke="#9FB2C7" stroke-width="2.5" fill="none" marker-end="url(#o-a)"/>
+
+  <!-- Same code both compute -->
+  <rect x="430" y="240" width="220" height="70" rx="12" fill="#3a2a00" stroke="#FF9900" stroke-width="2.5"/>
+  <text x="540" y="286" text-anchor="middle" font-size="34" font-weight="800" font-family="ui-monospace,monospace" fill="#FFC061">738 412</text>
+  <text x="540" y="335" text-anchor="middle" font-size="13" fill="#C9D4E0">ambos calculan el <tspan fill="#FFC061" font-weight="700">mismo</tspan> código, sin comunicarse</text>
+
+  <!-- time window -->
+  <text x="540" y="385" text-anchor="middle" font-size="14" fill="#C9D4E0">Cambia cada <tspan fill="#35C4DC" font-weight="700">30 segundos</tspan> — si lo interceptan, ya venció</text>
+  <text x="540" y="415" text-anchor="middle" font-size="12.5" fill="#8A97A6">TOTP: RFC 6238 (basado en tiempo) · HOTP: RFC 4226 (basado en contador)</text>
+</svg>
