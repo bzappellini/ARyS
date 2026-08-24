@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 470" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Sniffing pasivo en hub versus switch">
+  <defs>
+    <marker id="s-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#35C4DC"/></marker>
+  </defs>
+
+  <!-- ===== HUB (izquierda) ===== -->
+  <text x="250" y="40" text-anchor="middle" font-size="24" font-weight="800" fill="#FFFFFF">HUB</text>
+  <text x="250" y="64" text-anchor="middle" font-size="14" fill="#9FB2C7">repite todo por todos los puertos</text>
+
+  <rect x="180" y="212" width="140" height="46" rx="8" fill="#03294F" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="250" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#DCE7F3">HUB</text>
+
+  <!-- hosts -->
+  <g font-size="13" text-anchor="middle" fill="#C9D4E0">
+    <rect x="40" y="110" width="96" height="38" rx="6" fill="#0A2540" stroke="#3A4A5C"/><text x="88" y="134">Host A</text>
+    <rect x="40" y="322" width="96" height="38" rx="6" fill="#0A2540" stroke="#3A4A5C"/><text x="88" y="346">Host B</text>
+    <rect x="364" y="110" width="112" height="38" rx="6" fill="#3a1416" stroke="#E5484D"/><text x="420" y="129" fill="#F2A6A8" font-weight="700">Atacante</text><text x="420" y="143" fill="#C9D4E0" font-size="11">(promiscuo)</text>
+    <rect x="364" y="322" width="96" height="38" rx="6" fill="#0A2540" stroke="#3A4A5C"/><text x="412" y="346">Server</text>
+  </g>
+  <!-- traffic A->Server flooded to all -->
+  <g stroke="#35C4DC" stroke-width="2.5" fill="none" opacity="0.9">
+    <path d="M136 129 L 180 228" marker-end="url(#s-a)"/>
+    <path d="M320 232 L 364 129" marker-end="url(#s-a)"/>
+    <path d="M320 240 L 364 336" marker-end="url(#s-a)"/>
+    <path d="M180 244 L 136 336" marker-end="url(#s-a)"/>
+  </g>
+  <text x="250" y="410" text-anchor="middle" font-size="14.5" fill="#8FE0A8">El atacante <tspan font-weight="700">ve TODO</tspan> con solo estar en promiscuo</text>
+
+  <!-- divider -->
+  <line x1="540" y1="30" x2="540" y2="440" stroke="#3A4A5C" stroke-width="1.5" stroke-dasharray="5 6"/>
+
+  <!-- ===== SWITCH (derecha) ===== -->
+  <text x="830" y="40" text-anchor="middle" font-size="24" font-weight="800" fill="#FFFFFF">SWITCH</text>
+  <text x="830" y="64" text-anchor="middle" font-size="14" fill="#9FB2C7">cada trama solo al puerto destino</text>
+
+  <rect x="760" y="212" width="140" height="46" rx="8" fill="#03294F" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="830" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#DCE7F3">SWITCH</text>
+
+  <g font-size="13" text-anchor="middle" fill="#C9D4E0">
+    <rect x="620" y="110" width="96" height="38" rx="6" fill="#0A2540" stroke="#3A4A5C"/><text x="668" y="134">Host A</text>
+    <rect x="620" y="322" width="96" height="38" rx="6" fill="#0A2540" stroke="#3A4A5C"/><text x="668" y="346">Host B</text>
+    <rect x="944" y="110" width="112" height="38" rx="6" fill="#3a1416" stroke="#E5484D"/><text x="1000" y="129" fill="#F2A6A8" font-weight="700">Atacante</text><text x="1000" y="143" fill="#C9D4E0" font-size="11">(promiscuo)</text>
+    <rect x="944" y="322" width="96" height="38" rx="6" fill="#0A2540" stroke="#3A4A5C"/><text x="992" y="346">Server</text>
+  </g>
+  <!-- traffic A->Server only -->
+  <path d="M716 129 L 760 228" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#s-a)"/>
+  <path d="M900 240 L 944 336" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#s-a)"/>
+  <!-- attacker gets nothing -->
+  <line x1="900" y1="232" x2="946" y2="135" stroke="#6C7A8A" stroke-width="2" stroke-dasharray="3 5"/>
+  <text x="1000" y="175" text-anchor="middle" font-size="26" fill="#E5484D">✕</text>
+  <text x="830" y="410" text-anchor="middle" font-size="14.5" fill="#F2A6A8">El promiscuo <tspan font-weight="700">no alcanza</tspan>: hace falta técnica activa</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 430" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Network TAP versus port mirroring SPAN">
+  <defs>
+    <marker id="t-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#35C4DC"/></marker>
+    <marker id="t-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3DA35D"/></marker>
+  </defs>
+
+  <!-- ===== TAP ===== -->
+  <text x="250" y="40" text-anchor="middle" font-size="23" font-weight="800" fill="#FFFFFF">Network TAP</text>
+  <text x="250" y="63" text-anchor="middle" font-size="13.5" fill="#9FB2C7">hardware pasivo, intercalado en el cable</text>
+
+  <g text-anchor="middle" font-size="14" fill="#DCE7F3">
+    <rect x="40" y="150" width="90" height="44" rx="7" fill="#0A2540" stroke="#3A4A5C"/><text x="85" y="177">A</text>
+    <rect x="370" y="150" width="90" height="44" rx="7" fill="#0A2540" stroke="#3A4A5C"/><text x="415" y="177">B</text>
+    <rect x="205" y="150" width="90" height="44" rx="7" fill="#03294F" stroke="#3DA35D" stroke-width="2"/><text x="250" y="172" font-size="13" font-weight="700" fill="#8FE0A8">TAP</text>
+  </g>
+  <path d="M130 172 L 205 172" stroke="#3DA35D" stroke-width="3" fill="none" marker-end="url(#t-g)"/>
+  <path d="M295 172 L 370 172" stroke="#3DA35D" stroke-width="3" fill="none" marker-end="url(#t-g)"/>
+  <!-- copy down to analyzer -->
+  <rect x="185" y="300" width="130" height="44" rx="7" fill="#0A2540" stroke="#35C4DC" stroke-width="2"/><text x="250" y="327" text-anchor="middle" font-size="13" fill="#9EE7F5">Analizador</text>
+  <path d="M250 194 L 250 300" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#t-a)"/>
+  <text x="250" y="390" text-anchor="middle" font-size="13.5" fill="#C9D4E0"><tspan font-weight="700" fill="#8FE0A8">Copia fiel</tspan>, no pierde paquetes, invisible</text>
+
+  <line x1="540" y1="30" x2="540" y2="400" stroke="#3A4A5C" stroke-width="1.5" stroke-dasharray="5 6"/>
+
+  <!-- ===== SPAN ===== -->
+  <text x="810" y="40" text-anchor="middle" font-size="23" font-weight="800" fill="#FFFFFF">Port mirroring (SPAN)</text>
+  <text x="810" y="63" text-anchor="middle" font-size="13.5" fill="#9FB2C7">el switch copia el tráfico a un puerto</text>
+
+  <rect x="700" y="150" width="220" height="46" rx="8" fill="#03294F" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="810" y="179" text-anchor="middle" font-size="15" font-weight="700" fill="#DCE7F3">SWITCH</text>
+  <g text-anchor="middle" font-size="14" fill="#DCE7F3">
+    <rect x="600" y="150" width="70" height="46" rx="7" fill="#0A2540" stroke="#3A4A5C"/><text x="635" y="179">A</text>
+    <rect x="950" y="150" width="70" height="46" rx="7" fill="#0A2540" stroke="#3A4A5C"/><text x="985" y="179">B</text>
+  </g>
+  <path d="M670 173 L 700 173" stroke="#3DA35D" stroke-width="2.5" fill="none"/>
+  <path d="M920 173 L 950 173" stroke="#3DA35D" stroke-width="2.5" fill="none"/>
+  <rect x="745" y="300" width="130" height="44" rx="7" fill="#0A2540" stroke="#35C4DC" stroke-width="2"/><text x="810" y="327" text-anchor="middle" font-size="13" fill="#9EE7F5">Analizador</text>
+  <path d="M810 196 L 810 300" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#t-a)"/>
+  <text x="810" y="390" text-anchor="middle" font-size="13.5" fill="#C9D4E0">Flexible y sin hardware extra, pero <tspan font-weight="700" fill="#FFC061">puede descartar</tspan> en saturación</text>
+</svg>
