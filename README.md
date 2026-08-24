@@ -127,6 +127,27 @@ escudo) combinada con una identidad propia de la materia. Ver
 | 7 · Autenticación | ⬜ | ⬜ | ⬜ |
 | 8 · Monitoreo | ⬜ | ⬜ | ⬜ |
 
+## 👥 Trabajar en equipo
+
+El material lo mantiene el equipo docente. Todo cambio entra por **Pull Request**;
+al mergear a `main`, el sitio se **republica solo**. Un workflow valida en cada PR
+que las filminas compilan antes de poder mergear.
+
+Guía completa del flujo (ramas, commits, dónde va cada cosa):
+**[`CONTRIBUTING.md`](CONTRIBUTING.md)**.
+
+Resumen rápido:
+
+```bash
+git checkout main && git pull
+git checkout -b u04/filminas-sniffing
+# ...editar los .md...
+docker compose up --build          # previsualizar en localhost:8080
+git commit -am "feat(u04): filminas de Sniffing"
+git push -u origin u04/filminas-sniffing
+# abrir el PR en GitHub
+```
+
 ## 📄 Licencia y créditos
 
 - Material educativo de la cátedra. Los escudos e isologos de la UNPSJB son

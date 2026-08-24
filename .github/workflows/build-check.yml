@@ -1,0 +1,23 @@
+name: Validar filminas (PR)
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar Marp CLI
+        run: npm install -g @marp-team/marp-cli@4
+      - name: Compilar todas las filminas
+        run: sh scripts/build.sh
