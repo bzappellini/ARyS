@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 470" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Arquitectura SNMP: manager y agentes">
+  <defs>
+    <marker id="sn-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#35C4DC"/></marker>
+    <marker id="sn-o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#FF9900"/></marker>
+  </defs>
+
+  <!-- Manager / NMS -->
+  <rect x="60" y="150" width="210" height="170" rx="14" fill="rgba(10,99,196,.16)" stroke="#6FA8E0" stroke-width="2.5"/>
+  <text x="165" y="182" text-anchor="middle" font-size="18" font-weight="800" fill="#C9DEF5">Manager (NMS)</text>
+  <text x="165" y="208" text-anchor="middle" font-size="13" fill="#C9D4E0">consulta, grafica,</text>
+  <text x="165" y="226" text-anchor="middle" font-size="13" fill="#C9D4E0">alerta</text>
+  <text x="165" y="262" text-anchor="middle" font-size="13" fill="#9FB2C7">Zabbix, LibreNMS,</text>
+  <text x="165" y="280" text-anchor="middle" font-size="13" fill="#9FB2C7">PRTG, Observium…</text>
+
+  <!-- Agents -->
+  <g text-anchor="middle" font-size="13" fill="#DCE7F3">
+    <rect x="700" y="60" width="300" height="70" rx="10" fill="#0A2540" stroke="#3DA35D" stroke-width="2"/>
+    <text x="780" y="100" font-size="26">🌐</text><text x="890" y="90" font-weight="700">Router / Switch</text><text x="890" y="112" font-size="11.5" fill="#9FB2C7">agente + MIB</text>
+    <rect x="700" y="200" width="300" height="70" rx="10" fill="#0A2540" stroke="#3DA35D" stroke-width="2"/>
+    <text x="780" y="240" font-size="26">🖥️</text><text x="890" y="230" font-weight="700">Servidor</text><text x="890" y="252" font-size="11.5" fill="#9FB2C7">agente + MIB</text>
+    <rect x="700" y="340" width="300" height="70" rx="10" fill="#0A2540" stroke="#3DA35D" stroke-width="2"/>
+    <text x="780" y="380" font-size="26">🖨️</text><text x="890" y="370" font-weight="700">Impresora / UPS / AP</text><text x="890" y="392" font-size="11.5" fill="#9FB2C7">agente + MIB</text>
+  </g>
+
+  <!-- GET/SET arrows (manager -> agents, 161) -->
+  <path d="M270 210 C 450 150, 560 110, 700 95" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#sn-g)"/>
+  <path d="M270 230 L 700 235" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#sn-g)"/>
+  <path d="M270 250 C 450 310, 560 360, 700 375" stroke="#35C4DC" stroke-width="2.5" fill="none" marker-end="url(#sn-g)"/>
+  <rect x="400" y="150" width="200" height="26" rx="6" fill="#02141f"/>
+  <text x="500" y="168" text-anchor="middle" font-size="13" fill="#9EE7F5">GET / SET → puerto 161</text>
+
+  <!-- TRAP arrow (agent -> manager, 162) -->
+  <path d="M700 405 C 450 430, 330 360, 270 300" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-dasharray="5 4" marker-end="url(#sn-o)"/>
+  <rect x="360" y="410" width="270" height="26" rx="6" fill="#02141f"/>
+  <text x="495" y="428" text-anchor="middle" font-size="13" fill="#FFC061">TRAP / INFORM ← puerto 162 (avisos)</text>
+
+  <!-- MIB note -->
+  <text x="165" y="360" text-anchor="middle" font-size="12" fill="#8A97A6">cada dato = un OID en la MIB</text>
+</svg>

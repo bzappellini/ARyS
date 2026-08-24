@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 430" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Los tres pilares de la observabilidad: métricas, logs y trazas">
+  <text x="540" y="40" text-anchor="middle" font-size="16" fill="#9FB2C7">Del monitoreo clásico (SNMP/Syslog) a la <tspan fill="#FFC061" font-weight="700">observabilidad</tspan>: tres señales que se complementan</text>
+
+  <!-- Métricas -->
+  <rect x="50" y="80" width="310" height="250" rx="14" fill="rgba(53,196,220,.08)" stroke="#35C4DC" stroke-width="2"/>
+  <text x="205" y="120" text-anchor="middle" font-size="40">📈</text>
+  <text x="205" y="162" text-anchor="middle" font-size="20" font-weight="800" fill="#9EE7F5">Métricas</text>
+  <text x="205" y="192" text-anchor="middle" font-size="13.5" fill="#C9D4E0">números en el tiempo:</text>
+  <text x="205" y="212" text-anchor="middle" font-size="13.5" fill="#C9D4E0">CPU, tráfico, latencia</text>
+  <text x="205" y="248" text-anchor="middle" font-size="13" fill="#9FB2C7">"¿está pasando algo?"</text>
+  <text x="205" y="292" text-anchor="middle" font-size="12.5" fill="#8FE0A8">Prometheus + Grafana</text>
+  <text x="205" y="312" text-anchor="middle" font-size="11.5" fill="#8A97A6">(SNMP es su ancestro)</text>
+
+  <!-- Logs -->
+  <rect x="385" y="80" width="310" height="250" rx="14" fill="rgba(255,153,0,.10)" stroke="#FF9900" stroke-width="2"/>
+  <text x="540" y="120" text-anchor="middle" font-size="40">📜</text>
+  <text x="540" y="162" text-anchor="middle" font-size="20" font-weight="800" fill="#FFC061">Logs</text>
+  <text x="540" y="192" text-anchor="middle" font-size="13.5" fill="#C9D4E0">eventos con detalle:</text>
+  <text x="540" y="212" text-anchor="middle" font-size="13.5" fill="#C9D4E0">qué pasó y cuándo</text>
+  <text x="540" y="248" text-anchor="middle" font-size="13" fill="#9FB2C7">"¿qué fue exactamente?"</text>
+  <text x="540" y="292" text-anchor="middle" font-size="12.5" fill="#8FE0A8">Syslog · ELK · Loki</text>
+
+  <!-- Trazas -->
+  <rect x="720" y="80" width="310" height="250" rx="14" fill="rgba(167,139,250,.10)" stroke="#A78BFA" stroke-width="2"/>
+  <text x="875" y="120" text-anchor="middle" font-size="40">🔗</text>
+  <text x="875" y="162" text-anchor="middle" font-size="20" font-weight="800" fill="#C4B5FD">Trazas</text>
+  <text x="875" y="192" text-anchor="middle" font-size="13.5" fill="#C9D4E0">el recorrido de una</text>
+  <text x="875" y="212" text-anchor="middle" font-size="13.5" fill="#C9D4E0">petición entre servicios</text>
+  <text x="875" y="248" text-anchor="middle" font-size="13" fill="#9FB2C7">"¿dónde se trabó?"</text>
+  <text x="875" y="292" text-anchor="middle" font-size="12.5" fill="#8FE0A8">OpenTelemetry</text>
+
+  <text x="540" y="378" text-anchor="middle" font-size="14" fill="#C9D4E0">Juntas responden qué, cuándo y por qué — y alimentan al <tspan fill="#FFC061" font-weight="700">SIEM</tspan> para la seguridad</text>
+  <text x="540" y="408" text-anchor="middle" font-size="12" fill="#8A97A6">OpenTelemetry (CNCF) unifica la instrumentación de las tres señales</text>
+</svg>
