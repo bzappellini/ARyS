@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 440" font-family="system-ui,'Segoe UI','DejaVu Sans',sans-serif" role="img" aria-label="Tipos de firewall según la capa que inspeccionan">
+  <!-- OSI axis hint -->
+  <text x="530" y="34" text-anchor="middle" font-size="15" fill="#9FB2C7">A mayor capa inspeccionada → más contexto, más profundidad, más costo</text>
+  <defs>
+    <linearGradient id="depth" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35C4DC"/><stop offset="1" stop-color="#FF9900"/>
+    </linearGradient>
+  </defs>
+  <rect x="60" y="52" width="940" height="8" rx="4" fill="url(#depth)" opacity="0.55"/>
+
+  <!-- Card 1: packet filter -->
+  <rect x="60" y="90" width="290" height="300" rx="14" fill="rgba(53,196,220,.08)" stroke="#35C4DC" stroke-width="2"/>
+  <text x="205" y="128" text-anchor="middle" font-size="19" font-weight="800" fill="#9EE7F5">Filtrado de paquetes</text>
+  <text x="205" y="150" text-anchor="middle" font-size="13.5" fill="#9FB2C7">stateless</text>
+  <text x="205" y="192" text-anchor="middle" font-size="14" fill="#DCE7F3">Capas 3–4</text>
+  <text x="205" y="214" text-anchor="middle" font-size="13" fill="#B9C7D8">IP origen/destino, puerto,</text>
+  <text x="205" y="232" text-anchor="middle" font-size="13" fill="#B9C7D8">protocolo</text>
+  <text x="205" y="278" text-anchor="middle" font-size="13" fill="#8FE0A8">+ rápido y simple</text>
+  <text x="205" y="300" text-anchor="middle" font-size="13" fill="#F2A6A8">− sin contexto de conexión</text>
+  <text x="205" y="356" text-anchor="middle" font-size="12.5" fill="#8A97A6">decide paquete por paquete</text>
+
+  <!-- Card 2: stateful -->
+  <rect x="382" y="90" width="290" height="300" rx="14" fill="rgba(111,168,224,.10)" stroke="#6FA8E0" stroke-width="2"/>
+  <text x="527" y="128" text-anchor="middle" font-size="19" font-weight="800" fill="#C9DEF5">Inspección de estado</text>
+  <text x="527" y="150" text-anchor="middle" font-size="13.5" fill="#9FB2C7">stateful</text>
+  <text x="527" y="192" text-anchor="middle" font-size="14" fill="#DCE7F3">Capas 3–4 + estado</text>
+  <text x="527" y="214" text-anchor="middle" font-size="13" fill="#B9C7D8">tabla de conexiones;</text>
+  <text x="527" y="232" text-anchor="middle" font-size="13" fill="#B9C7D8">evalúa en contexto</text>
+  <text x="527" y="278" text-anchor="middle" font-size="13" fill="#8FE0A8">+ conoce la conexión</text>
+  <text x="527" y="300" text-anchor="middle" font-size="13" fill="#B9C7D8">el estándar de facto hoy</text>
+  <text x="527" y="356" text-anchor="middle" font-size="12.5" fill="#8A97A6">"esta respuesta, ¿pertenece a una sesión válida?"</text>
+
+  <!-- Card 3: application/proxy -->
+  <rect x="704" y="90" width="290" height="300" rx="14" fill="rgba(255,153,0,.10)" stroke="#FF9900" stroke-width="2"/>
+  <text x="849" y="128" text-anchor="middle" font-size="19" font-weight="800" fill="#FFC061">Aplicación / proxy</text>
+  <text x="849" y="150" text-anchor="middle" font-size="13.5" fill="#9FB2C7">L7 · NGFW / WAF</text>
+  <text x="849" y="192" text-anchor="middle" font-size="14" fill="#DCE7F3">Capa 7</text>
+  <text x="849" y="214" text-anchor="middle" font-size="13" fill="#B9C7D8">entiende el protocolo</text>
+  <text x="849" y="232" text-anchor="middle" font-size="13" fill="#B9C7D8">(HTTP, DNS, TLS…)</text>
+  <text x="849" y="278" text-anchor="middle" font-size="13" fill="#8FE0A8">+ ve el contenido y la app</text>
+  <text x="849" y="300" text-anchor="middle" font-size="13" fill="#F2A6A8">− más costoso y complejo</text>
+  <text x="849" y="356" text-anchor="middle" font-size="12.5" fill="#8A97A6">DPI, identidad de usuario, IPS</text>
+</svg>
