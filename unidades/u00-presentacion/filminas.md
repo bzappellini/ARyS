@@ -41,18 +41,18 @@ Administrar y asegurar no son dos trabajos: son dos caras del mismo trabajo.</di
 <div class="cols">
 <div>
 
-### Datos
-- **Código:** IF046
+### Equipo docente
 - **Profesor:** Bruno Zappellini
-- **Cuatrimestre:** segundo
+- **Ayudante de práctica:** Lucas Krmpotic
+- **Código:** IF046 · 2º cuatrimestre
 - **Carga:** 90 h (45 teoría + 45 práctica)
 
 </div>
 <div>
 
 ### Cursada
-- **Teoría:** jueves 15:00 – 18:00
-- **Práctica:** viernes 17:00 – 20:00
+- **Teoría:** jueves 15:00 – 18:00 *(Bruno)*
+- **Práctica:** viernes 17:00 – 20:00 *(Lucas)*
 - **Correlativa:** IF019 — Redes y
   Transmisión de Datos
 
