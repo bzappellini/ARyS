@@ -227,6 +227,46 @@ nft add rule inet filtro entrada tcp dport { 22, 80 } accept
 Proyecto nftables (netfilter.org). <code>ct state</code> es la <strong>inspección de
 estado</strong>: acepta lo que pertenece a una conexión ya válida.</div>
 
+<!--
+Nota del docente (profundizar el ejemplo de la slide, línea por línea):
+
+LÍNEA 1 — `add table inet filtro`: crea un contenedor de reglas. La familia "inet"
+es la clave: una sola tabla cubre IPv4 e IPv6 a la vez (con iptables había que
+duplicar todo en ip6tables). Nombrar la tabla "filtro" es nuestro; el nombre es libre.
+
+LÍNEA 2 — la cadena con `hook input priority 0; policy drop`: "hook input" la
+engancha al tráfico que ENTRA al propio equipo (hay otros hooks: output, forward).
+"policy drop" es el DEFAULT DENY de la slide de políticas: todo lo que no matchee
+una regla, se descarta en silencio. Diferenciar drop (descarta sin avisar) de reject
+(responde que está cerrado): drop no le da información al que escanea (U3).
+
+LÍNEA 3 — `ct state established,related accept`: ESTA línea es la que convierte
+al firewall en STATEFUL. "ct" es conntrack, la tabla de conexiones del kernel.
+Sin esta regla, nuestras propias salidas no tendrían respuesta: abrimos una web,
+el paquete de vuelta entra por "input" y la policy drop lo mataría. "related" cubre
+conexiones asociadas (ej. el canal de datos de FTP). Preguntar al aula: "¿qué pasa
+si borro esta línea?" → el equipo puede salir pero nunca recibe las respuestas.
+
+LÍNEA 4 — `tcp dport { 22, 80 } accept`: la lista blanca. Las llaves son un SET:
+varios puertos en una sola regla, más legible y más rápido de evaluar que una regla
+por puerto. Solo entra lo que explícitamente habilitamos.
+
+LA TRAMPA CLÁSICA (contarla, les va a pasar): en un servidor REMOTO, si aplicás
+la policy drop ANTES de la regla que permite SSH (puerto 22), te quedás afuera de
+tu propia máquina. Por eso se carga el conjunto completo de forma atómica desde un
+archivo (`nft -f reglas.nft`): o entra todo o no entra nada. En el TP5 trabajan en
+VM justamente para poder equivocarse sin consecuencias.
+
+PERSISTENCIA: las reglas viven en memoria y se pierden al reiniciar. Se guardan con
+`nft list ruleset > /etc/nftables.conf` y se habilita el servicio nftables. Mostrar
+`nft list ruleset` en vivo (en una VM) para que vean la estructura tabla → cadena →
+reglas.
+
+ORDEN: las reglas se evalúan de arriba hacia abajo y gana la primera que matchea;
+por eso "established,related" va ANTES de las reglas de puertos: es la más frecuente
+y ahorra evaluar el resto. Tiempo sugerido: 6-7 min.
+-->
+
 ---
 
 ## NGFW: el firewall moderno
@@ -237,6 +277,39 @@ capa 7**, identidad de usuario, *deep packet inspection* e **IPS integrado**.
 <div class="nota amenaza"><span class="rot">Honestidad de cátedra</span>
 <strong>NGFW no está definido en ningún NIST ni RFC</strong>: es un término de
 industria (Gartner). Útil como concepto, pero no le pongas un número normativo.</div>
+
+<!--
+Nota del docente (complemento, no está en la slide):
+
+QUÉ CAMBIA EN LA PRÁCTICA. Un firewall stateful clásico ve "puerto 443 abierto" y
+nada más: todo HTTPS le parece igual. Un NGFW identifica la APLICACIÓN dentro de
+ese 443 (esto es WhatsApp, esto es Zoom, esto es Dropbox) y puede aplicar política
+por aplicación y por USUARIO ("marketing puede usar Drive, contaduría no"), no solo
+por IP y puerto. Esa es la diferencia que hay que transmitir: pasa de "puertos" a
+"aplicaciones y personas".
+
+PREGUNTA PARA EL AULA: "¿qué ve un NGFW que un stateful no puede ver?" → el
+contenido y la aplicación (capa 7). Y la repregunta: "¿cómo lo ve, si HTTPS está
+cifrado?" → con inspección TLS (ver abajo) o por fingerprinting/metadatos (U4).
+
+INSPECCIÓN TLS (el punto incómodo). Para mirar dentro de HTTPS, el NGFW descifra,
+inspecciona y vuelve a cifrar: para eso instala un certificado propio en los equipos
+(es un "man-in-the-middle" autorizado). Tradeoffs que conviene nombrar: privacidad
+de los usuarios, costo de rendimiento (descifrar todo es caro), y romper
+aplicaciones con certificate pinning. Buen enganche con la ética de la U3.
+
+EJEMPLOS para que les suene: Palo Alto, Fortinet (FortiGate), Check Point, Cisco
+Firepower; en open source, pfSense/OPNsense con plugins de IDS. No hace falta
+venderles una marca: la idea es que reconozcan la categoría.
+
+EL COSTO OCULTO. Concentra firewall + IPS + inspección L7 en una caja: más
+funciones = más cosas que fallan en un mismo punto y licencias caras. Cerrar con
+la honestidad de la slide: es una categoría de mercado, no una norma.
+
+ENGANCHE: la próxima slide (WAF) es el firewall especializado en aplicaciones
+WEB; y Zero Trust (más adelante) es la respuesta a que ni el NGFW alcanza cuando
+ya no hay un perímetro claro. Tiempo sugerido: 5-6 min.
+-->
 
 ---
 
