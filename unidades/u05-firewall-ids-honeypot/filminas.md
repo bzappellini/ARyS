@@ -493,6 +493,50 @@ la falla que explotan casi todos los ataques modernos.</div>
 <strong>NIST SP 800-207</strong> (<em>Zero Trust Architecture</em>, 2020) y su
 complemento cloud-native <strong>SP 800-207A</strong> (2023).</div>
 
+<!--
+Nota del docente (profundizar el bullet "identidad de workload con eBPF"):
+
+1. EL PROBLEMA. Todo el firewall que vimos (nftables incluido) filtra por IP y
+puerto: "la IP X puede hablar con la IP Y en el 5432". Funciona cuando los equipos
+tienen IPs estables. Pero en cloud-native (Kubernetes) los workloads —los
+contenedores/pods— nacen y mueren todo el tiempo y cada vez reciben OTRA IP. Una
+regla por IP queda vieja a los dos minutos. Analogía: es un portero que reconoce a
+la gente por el auto en que llega; cambian de auto y el portero no sirve.
+
+2. LA SOLUCIÓN: FILTRAR POR IDENTIDAD. En vez de "qué IP sos", la política dice
+"QUÉ SOS": "el frontend puede hablar con la API; nada que no sea la API puede
+hablar con la base de datos". Esa identidad (etiquetas del workload, su service
+account) viaja con el contenedor a donde corra y con la IP que le toque. El
+portero ahora pide el DNI, no mira el auto. Eso es MICROSEGMENTACIÓN y es Zero
+Trust aplicado adentro del cluster: estar "adentro" no habilita nada; solo hablás
+con quien tu identidad permite.
+
+3. CÓMO SE IMPLEMENTA: eBPF. Tecnología del kernel de Linux que permite ejecutar
+programas chicos y seguros DENTRO del kernel, enganchados a eventos de red (cada
+paquete), sin modificar el kernel ni cargar módulos. Cilium usa eBPF para aplicar
+esas políticas por identidad en el kernel, justo donde el paquete entra o sale
+del pod: muy rápido y sin las cadenas larguísimas de iptables que explotan con
+miles de pods.
+
+FRASE PARA EL AULA: "Cuando las IPs ya no significan nada porque cambian todo el
+tiempo, el firewall deja de preguntar 'quién sos por tu dirección' y pasa a
+preguntar 'quién sos por tu identidad'; eBPF es lo que permite hacerlo en el
+kernel a la velocidad que necesita un cluster."
+
+ENGANCHE: es la misma lógica de default deny + menor privilegio que vieron con
+nftables, llevada a un mundo donde la IP dejó de ser un identificador confiable.
+Tiempo sugerido: 4 min.
+
+PARA AMPLIAR (fuentes primarias):
+- Qué es eBPF (sitio oficial): https://ebpf.io/what-is-ebpf/
+- Cilium, documentación: https://docs.cilium.io/
+- Kubernetes NetworkPolicy (política de red por etiquetas/identidad):
+  https://kubernetes.io/docs/concepts/services-networking/network-policies/
+- NIST SP 800-207, Zero Trust Architecture: https://csrc.nist.gov/pubs/sp/800/207/final
+- NIST SP 800-207A, Zero Trust en cloud-native/multi-cloud:
+  https://csrc.nist.gov/pubs/sp/800/207/a/final
+-->
+
 ---
 
 ## Una nota sobre las fuentes
