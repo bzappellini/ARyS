@@ -65,7 +65,7 @@ revisados por décadas. El "cifrado casero" se rompe siempre.</div>
 
 ## Simétrica vs. asimétrica
 
-![h:340](../../assets/img/simetrica-vs-asimetrica.svg)
+![h:430](../../assets/img/simetrica-vs-asimetrica.svg)
 
 ---
 
@@ -219,7 +219,7 @@ Si ves MD5 o SHA-1 protegiendo algo hoy, es un **hallazgo** de auditoría.
 
 ## Firma digital
 
-![h:330](../../assets/img/firma-digital.svg)
+![h:430](../../assets/img/firma-digital.svg)
 
 ---
 
@@ -254,7 +254,7 @@ electrónica" simple. La ley distingue.</div>
 
 ## PKI: la cadena de confianza
 
-![h:300](../../assets/img/pki-cadena.svg)
+![h:410](../../assets/img/pki-cadena.svg)
 
 ---
 
