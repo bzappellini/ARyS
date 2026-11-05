@@ -53,7 +53,7 @@ tres, siempre.</div>
 
 ## Los factores de autenticación
 
-![h:320](../../assets/img/factores-autenticacion.svg)
+![h:450](../../assets/img/factores-autenticacion.svg)
 
 ---
 
@@ -134,7 +134,7 @@ Mucho de lo que te enseñaron ("cambiala cada 90 días", "poné un símbolo") ho
 
 ## Autenticación basada en tickets: Kerberos
 
-![h:320](../../assets/img/kerberos.svg)
+![h:450](../../assets/img/kerberos.svg)
 
 ---
 
@@ -180,7 +180,7 @@ Dos contraseñas <strong>no</strong> son MFA (misma categoría). Tiene que ser d
 
 ## OTP: contraseñas de un solo uso
 
-![h:300](../../assets/img/totp.svg)
+![h:450](../../assets/img/totp.svg)
 
 ---
 
