@@ -160,8 +160,8 @@ lea de lejos; aclarar que cada flecha es ida y vuelta.
    de krbtgt (el cliente NO puede leerlo, solo guardarlo), y una clave de sesión
    cifrada con la clave del usuario. Solo quien sabe la contraseña puede abrir esa
    clave de sesión: así se prueba la identidad sin que la contraseña viaje.
-   Precisión sobre la etiqueta "pido acceso": en este paso todavía no se pide
-   acceso a ningún servicio; el usuario se AUTENTICA y recibe el TGT.
+   Ojo: en este paso todavía no se pide acceso a ningún servicio; el usuario
+   se AUTENTICA y recibe el TGT.
 
 2) TGS-REQ / TGS-REP: pedir un ticket para UN servicio (una vez por servicio).
    El cliente presenta el TGT, un autenticador (su nombre y la hora, cifrados con
@@ -252,8 +252,9 @@ corporativas.
 
 <div class="nota amenaza"><span class="rot">Ataques a conocer</span>
 <strong>Pass-the-Ticket</strong> (robar y reusar tickets), <strong>Kerberoasting</strong>
-(crackear offline claves de cuentas de servicio), <strong>Golden/Silver Ticket</strong>
-(falsificar tickets con el hash de <code>krbtgt</code>). Fuente: RFC 4120.</div>
+(crackear offline claves de cuentas de servicio), <strong>Golden Ticket</strong>
+(falsificar TGT con el hash de <code>krbtgt</code>), <strong>Silver Ticket</strong>
+(falsificar tickets de un servicio con el hash de su cuenta). Fuente: RFC 4120.</div>
 
 ---
 

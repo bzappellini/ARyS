@@ -27,7 +27,7 @@
   <!-- Step 1: client -> AS (arrow enters AS from below), get TGT -->
   <path d="M212 210 H385 V146" stroke="#FFC061" stroke-width="3.5" fill="none" stroke-linejoin="round" marker-end="url(#k-a)"/>
   <circle cx="262" cy="210" r="16" fill="#FF9900"/><text x="262" y="217" text-anchor="middle" font-size="19" font-weight="800" fill="#021C36">1</text>
-  <text x="404" y="198" font-size="18" fill="#FFC061">pido acceso → recibo TGT</text>
+  <text x="404" y="198" font-size="18" fill="#FFC061">me autentico → recibo TGT</text>
 
   <!-- Step 2: client -> TGS (arrow enters TGS from below), get service ticket -->
   <path d="M212 258 H695 V146" stroke="#FFC061" stroke-width="3.5" fill="none" stroke-linejoin="round" marker-end="url(#k-a)"/>
