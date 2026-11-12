@@ -136,6 +136,109 @@ Mucho de lo que te enseñaron ("cambiala cada 90 días", "poné un símbolo") ho
 
 ![h:450](../../assets/img/kerberos.svg)
 
+<!--
+Nota del docente (profundizar):
+
+Idea central: Kerberos responde a "¿cómo pruebo quién soy ante MUCHOS servicios
+sin mandarle mi contraseña a ninguno?". La respuesta es un tercero de confianza,
+el KDC, que comparte una clave secreta con cada usuario y con cada servicio y que
+reparte tickets. Todo es criptografía SIMÉTRICA (conectar con la Unidad 6).
+
+Quién conoce qué clave (dibujarlo en el pizarrón antes de seguir el flujo):
+- El KDC conoce la de TODOS: la de cada usuario (derivada de su contraseña), la de
+  cada servicio y la suya propia (la cuenta krbtgt en Active Directory).
+- El usuario solo conoce la suya. Cada servicio solo conoce la suya.
+- Por eso un ticket cifrado con la clave de un servicio solo pudo emitirlo el KDC.
+
+Los tres pasos del diagrama son en realidad tres intercambios de pedido y
+respuesta (seis mensajes). El diagrama dibuja una sola flecha por paso para que se
+lea de lejos; aclarar que cada flecha es ida y vuelta.
+
+1) AS-REQ / AS-REP: iniciar sesión (una vez por jornada).
+   El cliente dice "soy ana" y, como preautenticación, envía la hora actual
+   cifrada con su clave. El AS responde con dos cosas: el TGT, cifrado con la clave
+   de krbtgt (el cliente NO puede leerlo, solo guardarlo), y una clave de sesión
+   cifrada con la clave del usuario. Solo quien sabe la contraseña puede abrir esa
+   clave de sesión: así se prueba la identidad sin que la contraseña viaje.
+   Ojo: en este paso todavía no se pide acceso a ningún servicio; el usuario
+   se AUTENTICA y recibe el TGT.
+
+2) TGS-REQ / TGS-REP: pedir un ticket para UN servicio (una vez por servicio).
+   El cliente presenta el TGT, un autenticador (su nombre y la hora, cifrados con
+   la clave de sesión) y el nombre del servicio que quiere (SPN). El TGS devuelve
+   un ticket de servicio cifrado con la clave DE ESE SERVICIO y una nueva clave de
+   sesión entre cliente y servicio. No se vuelve a pedir la contraseña.
+
+3) AP-REQ / AP-REP: usar el servicio.
+   El cliente presenta el ticket de servicio y un autenticador. El servicio abre
+   el ticket con su propia clave y listo: NO consulta al KDC. Si el cliente lo
+   pide, el servicio responde demostrando que pudo abrir el ticket. Esa es la
+   autenticación MUTUA: el cliente también sabe que el servidor es legítimo.
+
+Ejemplo para contar en clase: una mañana en una red con cuatro servicios.
+- 08:00 Ana inicia sesión en su PC. Paso 1, una sola vez: obtiene el TGT, que en
+  Active Directory dura unas 10 horas. Es la única vez que escribe la contraseña.
+- 08:05 abre la intranet. Paso 2 pidiendo HTTP/intranet.empresa.local y paso 3
+  contra el servidor web.
+- 08:20 abre una carpeta compartida. Paso 2 pidiendo cifs/archivos.empresa.local y
+  paso 3 contra el servidor de archivos.
+- 09:00 manda a imprimir. Paso 2 pidiendo HOST/impresion.empresa.local y paso 3
+  contra el servidor de impresión.
+- 09:30 el sistema de gestión consulta la base. Paso 2 pidiendo
+  MSSQLSvc/db.empresa.local:1433 (en PostgreSQL sería postgres/db.empresa.local) y
+  paso 3 contra el servidor de base de datos.
+- 10:00 vuelve a la intranet: el ticket del servidor web sigue en la caché, así
+  que no hay ningún mensaje al KDC.
+
+Resumen para el pizarrón: 1 TGT + N tickets de servicio. El paso 1 se hace una
+vez; los pasos 2 y 3 se repiten por cada servicio nuevo. Cuatro servicios
+significan una contraseña escrita, cuatro tickets y cero contraseñas de usuarios
+guardadas en los servidores. Eso es el Single Sign-On. Se puede mostrar en vivo:
+`klist` en Windows; `kinit` y `klist` en Linux.
+
+Qué gana cada servidor: el web, el de archivos, el de impresión y el de base de
+datos no guardan contraseñas de usuarios ni consultan al KDC en cada acceso. Solo
+necesitan su propia clave (en Linux, el archivo keytab).
+
+Kerberos AUTENTICA, no autoriza (volver a la filmina de AAA): el ticket dice
+"esta es Ana"; si Ana puede leer esa carpeta o esa tabla lo decide cada servicio.
+En Active Directory el ticket lleva además los grupos del usuario (el PAC) para
+que el servicio pueda decidir.
+
+Detalles que suelen preguntar:
+- La hora importa. Los autenticadores llevan marca de tiempo y se rechazan si el
+  reloj difiere más de 5 minutos (valor por defecto). Es la defensa contra la
+  repetición de mensajes capturados (replay). Sin NTP, Kerberos deja de funcionar.
+- El KDC es un punto único de falla y de compromiso. Si cae, nadie obtiene tickets
+  nuevos, aunque los vigentes siguen sirviendo hasta vencer. Por eso se replica
+  (varios controladores de dominio). Escucha en el puerto 88, TCP y UDP.
+- Los servicios se identifican por SPN (clase/host), no por dirección IP. Por eso
+  Kerberos depende de que el DNS funcione bien.
+
+Por qué existen los ataques del pie del diagrama (nivel conceptual; se retoman en
+la filmina siguiente). Todos se entienden con "quién conoce qué clave":
+- Pass-the-Ticket: el ticket es al portador. Quien lo copia de un equipo
+  comprometido puede usarlo hasta que venza. Defensa: vida corta de los tickets y
+  proteger las estaciones de trabajo.
+- Kerberoasting: el ticket de servicio va cifrado con la clave de la cuenta de
+  servicio. Si esa cuenta tiene una contraseña débil, se puede adivinar fuera de
+  línea. Defensa: contraseñas largas y aleatorias en las cuentas de servicio
+  (cuentas administradas, gMSA) y cifrado AES en lugar de RC4.
+- Silver Ticket y Golden Ticket: usan claves DISTINTAS. Con la clave de un
+  servicio se falsifican tickets solo para ese servicio (Silver). Con la clave de
+  krbtgt se falsifican TGT válidos para todo el dominio (Golden). Defensa: tratar
+  la clave de krbtgt como el secreto más sensible del dominio y rotarla.
+
+Para ampliar:
+- RFC 4120, Kerberos V5: https://www.rfc-editor.org/rfc/rfc4120
+- Documentación de MIT Kerberos: https://web.mit.edu/kerberos/krb5-latest/doc/
+- Microsoft, Kerberos authentication overview:
+  https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview
+- "Designing an Authentication System: a Dialogue in Four Scenes" (MIT, 1988). Es
+  el diálogo clásico que explica por qué el protocolo es como es:
+  https://web.mit.edu/kerberos/dialogue.html
+-->
+
 ---
 
 ## Por qué importa Kerberos
@@ -149,8 +252,9 @@ corporativas.
 
 <div class="nota amenaza"><span class="rot">Ataques a conocer</span>
 <strong>Pass-the-Ticket</strong> (robar y reusar tickets), <strong>Kerberoasting</strong>
-(crackear offline claves de cuentas de servicio), <strong>Golden/Silver Ticket</strong>
-(falsificar tickets con el hash de <code>krbtgt</code>). Fuente: RFC 4120.</div>
+(crackear offline claves de cuentas de servicio), <strong>Golden Ticket</strong>
+(falsificar TGT con el hash de <code>krbtgt</code>), <strong>Silver Ticket</strong>
+(falsificar tickets de un servicio con el hash de su cuenta). Fuente: RFC 4120.</div>
 
 ---
 
