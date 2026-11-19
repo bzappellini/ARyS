@@ -58,7 +58,7 @@ están en ITU-T M.3400. Un <strong>NMS</strong> cubre estas áreas.</div>
 
 ## SNMP: la arquitectura
 
-![h:320](../../assets/img/snmp-arquitectura.svg)
+![h:450](../../assets/img/snmp-arquitectura.svg)
 
 ---
 
@@ -160,7 +160,7 @@ se puede analizar — lo mismo que vimos en Sniffing.</div>
 
 ## Los tres pilares de la observabilidad
 
-![h:310](../../assets/img/observabilidad-pilares.svg)
+![h:450](../../assets/img/observabilidad-pilares.svg)
 
 ---
 
@@ -206,7 +206,7 @@ alertar</strong>. Cambian las herramientas y la escala, no el objetivo.</div>
 
 ## El pipeline: de las fuentes al SOC
 
-![h:300](../../assets/img/siem-pipeline.svg)
+![h:450](../../assets/img/siem-pipeline.svg)
 
 ---
 
